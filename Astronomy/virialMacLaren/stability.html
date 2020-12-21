@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Bonnor-Ebert spheres</title>
+    <base href="https://AndresErnestoGuzman.github.io/">
+    <!-- <base href="http://localhost:8000/"> -->
+    <!-- <base href="/Users/andres/public_html/"> -->
+    <script type="text/javascript" src="mathjax-local.js"> </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <!--script type="text/javascript"  async src="MathJax-2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script-->
+   <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="Astronomy/mystyles.css">
+</head>
+  <body>
+   
+    <div class="topnav">
+      <a href="index.html"> Home </a>
+      <a href="Astronomy/virialMacLaren/index.html"> Back </a>
+    </div>
+    
+    <div class="content"> <!-- This class should be very simple, just a padding... -->
+    
+<h1>1.2.4 A more exact approach: spherical cloud, internal pressure gradient</h1>
+     
+     <p>  Define \(\varsigma^2=3\sigma_1^2+a^2\) which would be the square of the linewidth of a theoretical spectral line arising from a molecule 
+     with a mass equal to the mean molecular mass (between 2.33-2.37 \(m_{\rm H}\)). We will assume an isothermal, perfect gas equation of state given by 
+    \(P=\varsigma^2 \rho\). The relevant equations are then continuity and hydrostatic equilibrium under self-gravity (Poisson equation). Under the assumption of spherical symmetry, these equations  boil down to the  isothermal polytrope (\(n=\infty\), Horedt 2004) equations:
+    \begin{align}
+    \ell &=\left(\frac{\varsigma^2}{4\pi G \rho_0}\right)^{1/2}~~,\label{eq-l-def}\\
+     \xi&:=r/\ell ~~, \rho(r)=\rho_0\exp\left(-\theta(\xi)\right)~~. \label{eq-le-def}  \\
+    \theta''(\xi)+\frac{2}{\xi}\theta'(\xi)&=e^{-\theta(\xi)}~~, \theta(0)=\theta'(0)=0~~. \label{eq-le}  \\
+    \end{align}
+    Equation \eqref{eq-le} is the Lane-Emdem equation. These isothermal solution are known as Bonnor-Ebert spheres. Figure 1 shows  the Lane-Emdem function and some approximations.</p>
+<figure>
+  <img src="Astronomy/virialMacLaren/le.png" width="550">
+  <figcaption>
+    <small>
+      Figure 1: Lane-Emdem function and approximations.
+    </small>
+  </figcaption>
+</figure>
+
+<p>The election of the lengthscale \(\ell \) solves much of the physical problem. Note that in the case of the homogeneous sphere, the more rigorous hydrostatic equation
+are replaced by  virial balance and the definition of  \(\ell \) given in \eqref{eq-l-def} is  \(R_{\rm vir}/\sqrt{15}\). It is not difficult to reach also the following relations
+\begin{align}
+P_a&=\varsigma^2\rho_0e^{-\theta(\xi)}~~,\label{eq-Pa}\\
+M&=4\pi \ell ^3 \rho_0 \left(\xi^2\theta'(\xi)\right)~~.\label{eq-M}
+\end{align}
+Using \eqref{eq-M} in \eqref{eq-Pa} we also get
+\begin{equation}
+P_a=\left(\frac{e^{-\theta(\xi)}}{4\pi}\xi^4\left(\theta'(\xi)\right)^2\right) \frac{\varsigma^8}{G^3M^2} \le 1.398 \frac{\varsigma^8}{G^3M^2}~~,\label{eq-Pa-Mcons}
+\end{equation}
+which is analogous to Equation (17) in the previous section. As shown in \eqref{eq-Pa-Mcons},
+function in parentheses peaks at  1.398, and it indicates the maximum 
+external pressure   a cloud of mass \(M\) and internal pressure given by \(P=\varsigma^2\rho\) can support without entering gravitational collapse. From \eqref{eq-Pa-Mcons} we can also derive a maximum mass, usually referred to as Bonnor-Ebert mass \(M_{\rm BE}=1.182\frac{\varsigma^4}{P_a^{1/2}G^{3/2}}\).
+</p>
+<p> For stability we have to analyze the \(P_a\)-\(R\) curve. Stability is defined as \(dP_a/dR<0\). We follow Bonnor (1956) and use Equation \eqref{eq-Pa-Mcons} together with 
+\begin{equation}R=\frac{GM}{\varsigma^2\xi\theta'(\xi)}~~\label{eq-R}\end{equation}
+to trace the \(P_a\)-\(R\) curve parametrically. The function \((\xi\theta'(\xi))^{-1}\) runs between \(+\infty\) and \(\approx0.397\) monotonically decreasing with \(\xi\). That is, it 
+covers where function \(\left(e^{-\theta(\xi)}\xi^4\left(\theta'(\xi)\right)^2/4\pi\right)\) 
+reaches its maximum at  \(\xi\approx6.451\). At this point (red point in Figure 2), \(P_a\) reverses behaviour and so does the sign of the \(dP_a/dR\). This is analogous as in the previous section where \(P_a\propto\tilde{x}^3(1-\tilde{x})\) is maximized at \(\tilde{x}=3/4\), marking the stability limit. No stable Bonnor-Ebert sphere extends beyond \(\xi>6.451\). This implies that  the maximum contrast between the central density (and pressure) and the density (and pressure) at the border is \(\approx 14\), the central density is about \(5.7\) times the mean density,  and the central surface (or column) density is \(\approx3.6\) times the average surface density. </p>
+
+<figure>
+  <img src="Astronomy/virialMacLaren/pR.png" width="350">
+  <figcaption>
+    <small>
+      Figure 2: Normalized \(P_a\)-\(R\) curve. Red point marks the stability limit. 
+      Black point at \(((4 \pi/3)^{1/3}\frac{1}{2},2/\pi)\) is the \(\xi\rightarrow\infty\) asympotic limit where \(\rho \sim {\varsigma^2/2\pi Gr^{2}}\).
+    </small>
+  </figcaption>
+</figure>
+
+<p>
+  In the virial analysis of Section 1.2.1 we found that, given a radius \(R\) of the cloud and a external pressure \(P_a\), there are two solutions for the mass. These solutions are associated with \(\tilde{x}\) values symmetrically located around \(1/2\). Stability considerations eliminates  the solutions with \(\tilde{x}>3/4\), which implies that the solutions associated with \(\tilde{x}<1/4\) are not "double".  In the case of Bonnor-Ebert spheres 
+ something analogous happens. We start with Equation \eqref{eq-Pa}, which we write as (using \eqref{eq-l-def})
+  \begin{equation}
+  P_a=\frac{\varsigma^4}{4\pi G R^2}\left(\xi^2 e^{-\theta(\xi)}\right)~~.\label{eq-Pa-Rcons}
+  \end{equation}
+  Figure 3 shows the plot of the rightmost quantity in \eqref{eq-Pa-Rcons}. Red dot marks the stability limit. 
+  There are  two \(\xi\) stable solutions, associated with two masses, for a given \(R\) and \(P_a\) if \(2.738\le\xi\le6.451\). There is a unique stable 
+  solution otherwise. 
+</p>
+<figure>
+  <img src="Astronomy/virialMacLaren/PRcons.png" width="350">
+  <figcaption>
+    <small>
+      Figure 3: Normalized \(P_a\) assuming constant radius \(R\) (Equation \eqref{eq-Pa-Rcons}). Red dot marks the stability limit. 
+      Above the dashed line there are two possible \(\xi\) for each \(P_a\) and \(R\).
+    </small>
+  </figcaption>
+</figure>
+
+<p>Finally, we derive Equation (2.16) from Bonnor (1956)</p>
+ <button class="collapsible">
+  \begin{equation}
+    \left.\frac{\partial P_a}{\partial V}\right|_{M,\varsigma}=
+    -\frac{2 P_a}{3V}\frac{1-\left(\frac{4\pi}{3}\right)^{1/3}\frac{G M^2}{6 P_a V^{4/3}}}{1-\frac{M\varsigma^2}{3P_aV}}\label{eq-Bonnor(2.16)}
+  \end{equation} 
+  
+</button>
+  <div class="contenidocolapsable">
+	  <p>
+	    <u>Demonstration</u>
+	     We will treat \(\varsigma\) as a parameter and just consider it fixed as any other other constant. Convenient variables for the rest of the 
+       derivation are \(\ell \) and \(R\), that is
+       \begin{align}
+       M(\ell ,R)&=\frac{\varsigma^2}{G}\ell (R/\ell )^2\theta'(R/\ell )~~,\label{eq-aux-M}\\
+       P_a(\ell ,R)&=\frac{\varsigma^4}{4\pi G \ell ^2}e^{-\theta(R/\ell )}~~.\label{eq-aux-Pa}\\
+       \end{align}
+       The \(M\) constant equation allow us to derive \(\ell '(R)\) from 
+       \begin{equation}
+       \frac{dM}{dR}=\partial_RM+\partial_\ell  M \ell '(R)=0~\rightarrow~\ell '(R)=-\frac{\partial_RM}{\partial_\ell  M}~~.
+       \end{equation}
+       Using the Lane-Emden equation, we derive
+       \begin{equation}\ell '(R)=\frac{1}{\xi-\theta'(\xi)e^{\theta(\xi)}}~~,\label{eq-l'}\end{equation} 
+       which is valid in the \(M\) constant curve. The derivative of \(P_a\), on the other hand,
+       \begin{equation}
+       \left.\frac{dP_a}{dR}\right|_M=\partial_RP_a+\partial_\ell P_a \ell '(R)=\frac{\varsigma ^4 \xi ^3 e^{-\theta (\xi )} \left(e^{\theta (\xi )} \theta '(\xi )^2-2\right)}{4 \pi  G R^3 \left(\xi-e^{\theta (\xi )} \theta '(\xi )\right)}~~.\label{eq-Pa-der}
+       \end{equation}
+      Using Equations \eqref{eq-aux-M} and \eqref{eq-aux-Pa}  in \eqref{eq-Pa-der} and the fact that 
+       \[ \left.\frac{dP_a}{dV}\right|_M= \frac{1}{4 \pi R^2}\left.\frac{dP_a}{dR}\right|_M\]
+       after algebra we arrive at \eqref{eq-Bonnor(2.16)}. Note that we can eliminate the explicit dependances on \(\ell \) and \(\theta\).
+    </p>
+
+    <p align="right"> \(\blacksquare\)</p>
+    </div>
+	  <p>We can use this equation to derive independently the condition for equilibrium. Let us define \(P_a=\mathfrak{p} \frac{\varsigma^8}{G^3M^2}\) and \(V=x \left(\frac{GM}{\varsigma^2}\right)^3\). Equation \eqref{eq-Bonnor(2.16)} then can be written
+    \begin{equation}
+    \left.\frac{\partial \mathfrak{p}}{\partial x}\right|_{M,\varsigma}=
+    -\frac{2 \mathfrak{p}}{3x}\frac{1-\left(\frac{4\pi}{3}\right)^{1/3}\frac{1}{6 \mathfrak{p} x^{4/3}}}{1-\frac{1}{3\mathfrak{p}x}}~~.\label{eq-B2.16n}
+     \end{equation}
+    Figure 4 shows the stream plot associated with Equation \eqref{eq-B2.16n} with the Lane-Emden solution marked in black and the extremal point shown in red. This red point is the same as in Figure 2.
+    </p>
+    <figure>
+  <img src="Astronomy/virialMacLaren/px.png" width="350">
+  <figcaption>
+    <small>
+      Figure 4: Equation \eqref{eq-B2.16n} streamlines. The \(\mathfrak{p}\)-\(x\) curve is marked with a continuous black line. 
+      Red point marks the stability limit. Dotted lines are the curves \(\mathfrak{p}=\left(\frac{4\pi}{3}\right)^{1/3}\frac{1}{6x^{4/3}}\) and \(\mathfrak{p}=1/(3x)\).
+    </small>
+  </figcaption>
+</figure>
+	  <ul>	
+      	<li> Bonnor, W. B. 1956, MNRAS 116, 351</li>
+        <li> Horedt, G. 2004 <i>Polytropes: Applications in Astrophysics and Related Fields.</i> Kluwer Academic Publishers.</li>
+      	<li> Stahler, S. W. & Palla, F. 2004 <i>The formation of stars</i>. Wiley-VCH.
+      	 </ul>
+</div>
+      <div class="footer">
+  <p><hr/></p>
+</div>
+ 
+    <!-- %%%%%%%%%%%%%%%%  SCRIPTS %%%%%%%%%%%%%%%%% https://stackoverflow.com/questions/3531314/should-i-write-script-in-the-body-or-the-head-of-the-html
+      Place script that impacts the render of the page at the end of the body (before the body closure).-->
+
+    <script src="Astronomy/collapsible.js"></script>
+  </body>
+</html>

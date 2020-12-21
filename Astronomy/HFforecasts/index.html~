@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>ALMA Calibrator Forecasts Plots</title>
+    <base href="https://alma-intweb.mtk.nao.ac.jp/~andresgz/">
+    <!-- <base href="/Users/andres/public_html/"> -->
+    <!-- <script type="text/javascript" async src="MathJax-2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script> -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="Astronomy/mystyles.css">
+</head>
+  <body>
+    <div class="topnav">
+      <!--a href="index.html">Home </a-->
+      <a href="Astronomy/index.html"> Back </a>
+    </div>
+      <div class="content">
+	  <h2>High frequency forecasts </h2>
+    <p> Updated lightcurves with forecasts. Dark vertical black lines separate the regions of the plot where the time axis has a different stretch (to accomodate better the entire lightcurve). Vertical cyan line indicates current time (approximately 12:00 of current date). <i>Previous to cyan line: </i> error bars show the forecast at the time of the last measurement, compared with the data. This forecast is based on all data up to the second to last measurement. <i>Ahead of the cyan line: </i> expanding areas show the forecasts regions.</p>
+
+   <button class="collapsible">
+  J0319+4130. Bands 6, 7, 9, and 10.
+      </button>
+      <div class="contenidocolapsable">
+           <figure>
+          <img src="Astronomy/HFforecasts/J0319+4130.png" width="1200" title="J0319+4130 linear plot">
+          <figcaption>
+            <small>
+        J0319+4130 linear plot.
+            </small>
+          </figcaption>
+        </figure>
+    </div>
+<button class="collapsible">
+  J0522-3627. Bands 6, 7, 9, and 10.
+      </button>
+      <div class="contenidocolapsable">
+           <figure>
+          <img src="Astronomy/HFforecasts/J0522-3627.png" width="1200" title="J0522-3627 linear plot">
+          <figcaption>
+            <small>
+        J0522-3627 linear plot.
+            </small>
+          </figcaption>
+        </figure>
+    </div>
+<button class="collapsible">
+  J1058+0133. Bands 6, 7, 9, and 10.
+      </button>
+      <div class="contenidocolapsable">
+           <figure>
+          <img src="Astronomy/HFforecasts/J1058+0133.png" width="1200" title="J1058+0133 linear plot">
+          <figcaption>
+            <small>
+        J1058+0133 linear plot.
+            </small>
+          </figcaption>
+        </figure>
+    </div>
+<button class="collapsible">
+  J1256-0547. Bands 6, 7, 9, and 10.
+      </button>
+      <div class="contenidocolapsable">
+           <figure>
+          <img src="Astronomy/HFforecasts/J1256-0547.png" width="1200" title="J1256-0547 linear plot">
+          <figcaption>
+            <small>
+        J1256-0547 linear plot.
+            </small>
+          </figcaption>
+        </figure>
+    </div>
+<button class="collapsible">
+  J1517-2422. Bands 6, 7, 9, and 10.
+      </button>
+      <div class="contenidocolapsable">
+           <figure>
+          <img src="Astronomy/HFforecasts/J1517-2422.png" width="1200" title="J1517-2422 linear plot">
+          <figcaption>
+            <small>
+        J1517-2422 linear plot.
+            </small>
+          </figcaption>
+        </figure>
+    </div>
+<button class="collapsible">
+  J1924-2914. Bands 6, 7, 9, and 10.
+      </button>
+      <div class="contenidocolapsable">
+           <figure>
+          <img src="Astronomy/HFforecasts/J1924-2914.png" width="1200" title="J1924-2914 linear plot">
+          <figcaption>
+            <small>
+        J1924-2914 linear plot.
+            </small>
+          </figcaption>
+        </figure>
+    </div>
+<button class="collapsible">
+  J2253+1608. Bands 6, 7, 9, and 10.
+      </button>
+      <div class="contenidocolapsable">
+           <figure>
+          <img src="Astronomy/HFforecasts/J2253+1608.png" width="1200" title="J2253+1608 linear plot">
+          <figcaption>
+            <small>
+        J2253+1608 linear plot.
+            </small>
+          </figcaption>
+        </figure>
+    </div>
+<button class="collapsible">
+  J2258-2758. Bands 6, 7, 9, and 10.
+      </button>
+      <div class="contenidocolapsable">
+           <figure>
+          <img src="Astronomy/HFforecasts/J2258-2758.png" width="1200" title="J2258-2758 linear plot">
+          <figcaption>
+            <small>
+        J2258-2758 linear plot.
+            </small>
+          </figcaption>
+        </figure>
+    </div>
+
+
+	</div>
+	 <div class="footer">
+  		<a href="Astronomy/index.html">Back </a>
+	</div>
+  <script src="Astronomy/collapsible.js"></script>
+  </body>
+</html>

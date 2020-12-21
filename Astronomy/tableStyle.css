@@ -1,0 +1,82 @@
+* {
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+table {
+	width:100%;	
+}
+body {
+    margin-left: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+tr.bottomborder td{
+    border-bottom: 2px solid black;
+}
+/* Style the top navigation bar */
+.topnav {
+    overflow: hidden;
+    background-color: blue;
+}
+
+/* Style the topnav links . Color of the letters */
+.topnav a {
+    float: left;
+    display: block;
+    color: yellow;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* Change color on hover */
+.topnav a:hover {
+    background-color: white;
+    color: black;
+}
+
+/* Style the content */
+.content {
+    background-color: white;
+    margin-left:2em;
+    margin-right:2em;
+    padding: 10px;
+}
+/* Style the footer */
+.footer {
+    overflow: hidden;
+    background-color: skyblue;
+}
+/* Style the footer links . Color of the letters */
+.footer a {
+    float: left;
+    display: block;
+    text-align: center;
+    padding: 10px 10px;
+}
+.footer a:hover {
+    background-color:white;
+    color:black;
+}
+.footer separator {
+    float: left;
+    display: block;
+    text-align: center;
+    padding: 10px 10px;
+}
+hr {
+    display: block;
+    height: 1px;
+    width: 50%;
+    border: 0;
+    border-top: 1px solid Black;
+    margin: 1ex 0;
+    margin-left: 25%;
+    padding: 0;
+    top: 50%;
+}
+
+.center{text-align:center}

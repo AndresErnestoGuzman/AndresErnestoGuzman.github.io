@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Andres E. Guzman's webpage</title>
+    <base href="https://alma-intweb.mtk.nao.ac.jp/~andresgz/">
+    <!-- <base href="http://localhost:8000/"> -->
+    <!--base href="/Users/andres/public_html/"-->
+    <script type="text/javascript" src="mathjax-local.js"> </script>
+    <!--script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script-->
+    <script type="text/javascript"  src="MathJax-2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+   <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="Astronomy/mystyles.css">
+</head>
+  <body>
+   
+    <div class="topnav">
+      <a href="index.html">Home </a>
+      <a href="Astronomy/astro.html">Back </a>
+    </div>
+    
+    <div class="content"> <!-- This class should be very simple, just a padding... -->
+    
+
+<h3>1. The virial theorem applied to simple scenarios</h3>
+       
+      
+      <p> Consider a gaseous cloud with density \(\rho\). The virial theorem in Lagrangian coordinates expresses the double temporal derivative of the "moment of inertia" of a volume (which "flows" with the fluid, that is  Lagrangian) in terms of other quantities related with the kinetic and gravitational energy, pressure, etc.. Goldstein's book has a statistical version of this theorem for stationary systems. Here, we are more interested in the instantaneous version (Ballesteros-Paredes 2006). According to it,
+  \begin{equation}
+  \frac{1}{2}\frac{d^2I}{dt^2}=2(E_k+E_i)+W~~,\label{virial}
+  \end{equation}
+	where \(I=\int_V\rho r^2 dV\) is what we will call the moment of inertia. Note, however, that the moment of inertia is usually defined  respect to an <i>axis</i>. In our case, it is defined with the distance respect to a <i>point</i>. \(E_k=1/2\int_V\rho u^2dV\) is the 'bulk' kinetic energy, \(E_i=\int_V \varepsilon dV\) is the thermal internal energy (typically, \(\varepsilon=3 P/2\) for monoatomic gas, with \(P\) the pressure) and \(W=-\int_V \rho \vec{r}\cdot\nabla \phi dV\). In the previous equations \(u\) is the gas velocity and \(\phi\) is the gravitational potential (that is, \(\Delta\phi=4\pi\rho \) and \(\vec{F}_{\rm grav.}=-\nabla \phi\)).
+	In Equation \eqref{virial}, we disregard surface terms and magnetic fields. The former may be justified by taking the limit of the core/cloud/clump exactly where the density is zero, that is, in the "border" of the cloud. For this  exercise, we will neglect the thermal energy also.
+      </p>
+      
+      <p>The potential \(\phi\) can be separated between a  part due to the core and another to the ambient in which the cloud is inmmersed. That is
+	$$ \phi=\phi_c+\phi_a~~.$$
+	We can use the formal solution
+	\begin{equation}
+	\phi(\vec{r})=-\int\frac{G\rho(\vec{r}^\prime)}{|\vec{r}-\vec{r}^\prime|} dV^\prime~~,\label{solphi}
+	\end{equation}
+	which fixes \(\phi\rightarrow0\) in infinity for finite distributions of mass. In Equation \eqref{solphi}, the integration is in all space. We can assume that \(\rho(\vec{r})=\rho_c(\vec{r})+\rho_a(\vec{r})\) separates the cloud and the ambient, with \(\rho_a=0\) when \(\rho_c>0\) and viceversa, which will simplify somewhat some calculations. 
+The picture to have in mind is a cloud subject to an ambient gravitational potential, produced by a mass distribution 
+around (although separated from) the cloud. Then we have </p>
+	<button class="collapsible">\begin{equation}W=\frac{1}{2}\int_{V}\rho_c\phi_cdV-\int_V\rho_c\vec{r}\cdot\nabla\phi_adV\label{result}\end{equation} <div class="bottomrightcomment">(Clic to expand)</div></button>
+	<div class="contenidocolapsable">
+	  <p>
+	    <u>Demonstration</u>
+	      \begin{align*}
+	      W&=-\int_V \rho \vec{r}\cdot\nabla \phi dV &&\text{(by def.)}\\
+	      &=-\underbrace{\int_V \rho_c \vec{r}\cdot\nabla \phi_c dV}_{W_1} -
+	      \int_V \rho_c \vec{r}\cdot\nabla \phi_a dV~~.&&
+	      \end{align*}
+In the last expression we use that \(\rho_a=0\) inside the volume \(V\) (the cloud). Then
+\begin{align*}
+W_1&=\int_V \rho_c \vec{r}\cdot\nabla \phi_c dV \\
+&=\int_V \rho_c \vec{r}\cdot\nabla_\vec{r}\left(-\int_V\frac{G\rho_c(\vec{r}^\prime)}{|\vec{r}-\vec{r}^\prime|}\right)dV^\prime dV\\
+&=\int_V \int_V G\rho_c(\vec{r})\rho_c(\vec{r}^\prime) \vec{r}\cdot\nabla_\vec{r}\left(\frac{-1}{|\vec{r}-\vec{r}^\prime|}\right)dV^\prime dV\\
+&=\int_V\int_V G\rho_c(\vec{r})\rho_c(\vec{r}^\prime) \vec{r}\cdot \frac{(\vec{r}-\vec{r}^\prime)}{|\vec{r}-\vec{r}^\prime|^{3}}dVdV^\prime &\tag{3.1}\\
+&=\int_V\int_V G\rho_c(\vec{r})\rho_c(\vec{r}^\prime) (\vec{r}-\vec{r}^\prime)\cdot \frac{(\vec{r}-\vec{r}^\prime)}{|\vec{r}-\vec{r}^\prime|^{3}}dVdV^\prime+\int_V\int_V G\rho_c(\vec{r})\rho_c(\vec{r}^\prime) \vec{r}^\prime\cdot \frac{(\vec{r}-\vec{r}^\prime)}{|\vec{r}-\vec{r}^\prime|^{3}}dVdV^\prime~~.
+\end{align*}
+Note  that the second summand in the last line is the same expression as in line marked with (3.1), but with changed signs (and after swaping the name of the dummy variables \(\vec{r}\) and \(\vec{r}^\prime\)). Therefore
+\begin{align*}
+W_1&=\int_V\int_V \frac{G \rho_c(\vec{r})\rho_c(\vec{r}^\prime)}{|\vec{r}-\vec{r}^\prime|}dVdV^\prime-W_1&&\\
+&=-\int_V\rho_c(\vec{r})\phi_c(\vec{r})dV-W_1&&\text{(by Eq. (2))}\\
+&\longrightarrow  W_1 = -\frac{1}{2}\int_V \rho_c\phi_c dV~~,&&\\
+	      \end{align*}
+therefore concluding with Equation (3).
+	  </p>
+	  <p align="right"> \(\blacksquare\)</p>
+	  </div>
+
+<p>
+We use even more simplifications. We ignore the ambient cloud and  drop the second summand in the Equation (3). We further assume that the cloud is spherical and homogeneous (\(\rho_c={\rm constant}\)). This implies that
+$$ W=-\frac{3}{5}\frac{GM^2}{R}~~,$$ where \(R\) is the radius of the cloud and \(M=4\pi R^3\rho_c/3\) is the mass of the cloud. The sign convention may be confusing at times, but the main point is that this "inner gravity" should enter the right hand side of Equation (1) as a <em> negative </em> term.
+</p>
+
+      <p>
+For the velocity field inside the cloud we will assume that it is a random, Gaussian velocity field.  Note that if a velocity field is
+	characterized by an isotropic Gaussian probability density
+	function, then the velocity dispersion is given by</p>
+	<button class="collapsible">\begin{equation}\langle u^2\rangle=3\sigma_1^2~~, \label{eq}\end{equation}<div class="bottomrightcomment">(Clic to expand)</div></button>
+	<div class="contenidocolapsable">
+      <p>
+	      \begin{align*}
+	      \langle u^2\rangle&=\int^{+\infty}_{-\infty} du_x\int^{+\infty}_{-\infty}du_y \int^{+\infty}_{-\infty}du_z \frac{(u_x^2+u_y^2+u_z^2)}{\left(2 \pi \sigma_x^2\sigma_y^2\sigma_z^2\right)^{3/2}}\,e^{-\left(\frac{u_x^2}{2\sigma_x^2}+\frac{u_y^2}{2\sigma_y^2}+\frac{u_z^2}{2\sigma_z^2}\right)} && \\
+	      &=\sigma_x^2+\sigma_y^2+\sigma_z^2 && \\
+	      &=3\sigma_1^2 &&\text{assuming }\sigma_x=\sigma_y=\sigma_z=\sigma_1~~.
+	      \end{align*}
+      </p>
+      <p align="right"> \(\blacksquare\)</p>
+	  </div>
+	
+
+   <p> where \(\sigma_1\) is the 1D-velocity dispersion, that is,
+    the velocity dispersion of the projected velocity onto an
+    arbitrary (under isotropic conditions) axis. This axis could be
+    the line of sight, relating \(\sigma_1\) with the observed
+    linewidth (FWHM or HPBW) by \(\sigma_1=\frac{\Delta
+     V}{2\sqrt{2\ln(2)}}\).
+     Therefore, we use this result to calculate
+     \begin{equation}
+     \int_V\rho u^2dV=\rho_c V \langle u^2\rangle =3\sigma_1^2 M=\frac{3}{8\ln(2)}(\Delta V)^2 M~~.
+     \end{equation}
+In the last equation, we have assumed that the volume is large in order to replace \(u^2\) by its average value.
+   </p>
+
+      <p> Going back to the virial theorem, we use  these approximation and assumptions and obtain
+\begin{equation} \frac{1}{2}\frac{d^2I}{dt^2}= \frac{3}{8\ln(2)}(\Delta V)^2 M -\frac{3GM^2}{5R}~~.\label{virf}\end{equation}
+  The "virial
+     mass" (\(M_{\rm vir}\)) is calculated &mdash; in addition to all approximations and simplifications &mdash; from the assumption of virial
+	equilibrium, that is, \(\ddot{I}=0\), equivalent to  \(2E_k/W=1\). Solving for \(M\) in Equation \eqref{virf}, we obtain the virial mass estimation
+	\begin{equation} M=M_{\rm vir}=\frac{5}{8 \ln(2)}\frac{R\Delta V^2}{G}\approx210\, M_\odot \left(\frac{\Delta V}{\rm km~s^{-1}}\right)^2\left(\frac{R}{\rm pc}\right)~~,\label{eq-ML}\end{equation}
+	which is the result given by MacLaren et al.
+</p>
+
+      <h4>A slight generalization (\(\rho_c\propto r^{-n}\))</h4>
+      
+      <p>
+	We can generalize a bit the result to non-uniform density
+	laws. The main hypothesis and assumptions were already
+	made for the uniform case. We assume
+	\(\rho_c(r)=\rho_c(R)(R/r)^n\) for
+	\( r &lt; R \),
+	and zero outside the cloud.A minimum requirement is
+	\(n&lt;3\) for the mass not to diverge in the center. Therefore, the
+	mass inside a sphere on radius \(r\le R \) is given by \begin{equation*}  M_r=\frac{4\pi}{3-n}\rho_c(r)r^3~~.  \end{equation*}</p>
+      
+      <p> The potential  \(\phi_c\), on the other hand, is given by Equation \eqref{solphi}, which fixes its value at infinity. This definition also correspond to the usual  \(\phi=-GM/r\) valid outside spherically distributed masses.
+	For density behaving like \(r^{-n}\) we have
+	\begin{equation}
+	\phi_c(r)=\begin{cases}
+	&-\frac{G M_r}{(2-n)r}
+	\left( \left(\frac{R}{r}\right)^{2-n}(3-n)-1\right),& n \neq 2 \quad (n &lt; 3)\\
+	&-\frac{G M_r}{r}\left(\ln\left(\frac{R}{r}\right)+1 \right),& n=2\\ \end{cases}~~.\label{fi}
+	\end{equation}
+	Expressions in \eqref{fi} connect continuously  with the function \(- GM/r \) outside of the cloud. To calculate \(W\) (the gravitational energy under the current assumptions) we need to assume that \( n &lt; 5/2\), otherwise the gravitational energy diverges. Using Equation \eqref{result} and the \(n \neq2 \) case of \eqref{fi} (assuming again that there is no  external, ambient cloud) we obtain
+	\begin{equation}
+	W=-\frac{3-n}{5-2n}\frac{G M^2}{R}~~,
+	\end{equation}
+	which is also valid at \(n=2\) by continuity.
+ </p>
+      <p>The expressions for the velocity fields remain the same, which is part of the assumptions. It does not matter that the different density laws weight more the center of the cloud than the outskirts, the result is the same because the velocity law is assumed to be homogeneous throughout the cloud. Therefore, replacing the last expression (8) for  \(W\) in Equation \eqref{virf} and setting \(\ddot{I}=0\) we obtain \begin{equation}
+	M_{\rm vir}=\frac{3(5-2n)}{8(3-n)\ln(2)}\frac{(\Delta V)^2 R}{G}=
+	\left(\frac{\Delta V}{\rm km~s^{-1}}\right)^2\left(\frac{R}{\rm pc}\right) \times \begin{cases}
+	126 M_\odot, & n=2\\
+	189 M_\odot, & n=1\\
+	\end{cases}~~,
+	\end{equation}
+which correspond  to the vaues in Table 1 of MacLaren et al.
+
+<h3>2. Thermal pressure: random molecular motions</h3>
+       
+       <p>Including thermal molecular  motion of the ambient and the cloud itself includes two additional terms: a surface pressure and an internal 
+       	thermal energy. Explicitly, 
+       </p>	
+      <p>\begin{equation} \frac{1}{2}\frac{d^2I}{dt^2}=2(E_k+E_i)+W+2\tau_S~~,\label{virial-pres}\end{equation}</p>
+      <p>where \(\tau_S=\oint_{\partial V}\vec{r}\cdot P_a\vec{dS}\). Again, sign convention might get confusing: a positive ambient pressure will
+      help confining the cloud. Therefore, it will enter Equation \eqref{virial-pres} with a negative sign (as \(W\), the gravity term). The internal thermal energy \(E_i=3/2\int_V P_i dV\).</p>
+
+      <h4> An homogeneous, spherical cloud</h4>
+
+      <p>In this case, \(E_i=3/2 P_i V\) and \(\tau_S=-3/2 P_a V\). Therefore, Equation \eqref{virf} (we again make the assumption of a Gaussian velocity field inside the cloud) becomes</p>
+      <p>\begin{equation}\frac{1}{2}\frac{d^2I}{dt^2}= 3\sigma_1^2 M -\frac{3GM^2}{5R} + 3 (P_i-P_a) V ~~,\label{virf-pres}\end{equation} where in this case
+      \(\sigma_1\) has a small correction because of the thermal motion of the molecules used to trace the velocity field. This molecule is usually much heavier than \({\rm H}_2\), so its thermal velocity is commonly negligible compared with the non-thermal motions.</p>
+      <p>Let us suppose we want to determine the virial mass (that is, the mass which makes the Equation \eqref{virf-pres} zero) of a spherical cloud of radius \(R\), which we will assume homogeneous with a temperature \(T\) and surrounded by tenous material producing a surface pressure \(P_a\). Note that we can write the internal pressure as \(\rho a^2\) where \(a^2=k_B T/\mu m_H\) is the "isothermal" sound speed squared.  The equation to solve is then
+       \begin{equation} 0=x^2-x\left(1+\frac{a^2}{\sigma_1^2}\right)+\frac{P_a V}{M_{\rm vir,0}\sigma_1^2}~~, \end{equation}
+      where \(x=M/M_{\rm vir,0}\) and \(M_{\rm vir,0}\) is the virial mass without surface density nor internal pressure \eqref{eq-ML}. Therefore, there are in general two solutions (which may be equal) or no solution for the mass. In particular, if \(P_a>\frac{5R}{GV}(\sigma_1^2+a^2)^2\), then there is no solution (consistent with all the rest of the parameters and the many assumptions). This means that the required density inside the cloud to balance the external pressure is so large that the self-gravity of the cloud produces collapse.  </p>
+      <p>The two mass solutions can be understood when we consider that the gravity term is \(\propto M^2\), while the internal pressure term is \(\propto M\). When the mass is small, gravity is negligible respect to pressure, and the first mass solution correspond to that  associated with  a density sufficient to produce an internal pressure capable of counteracting \(P_a\). A slightly higher mass will make \(P_i>P_a\). By increasing the mass, the gravity term becomes eventually dominant,  marking the second  mass solution. Due to \(P_i\), this second solution is always larger than \(M_{\rm vir,0}\).</p>
+
+      <li> MacLaren et al. 1988 ApJ 333, 821  </li>
+      <li> Ballesteros-Paredes 2006 MNRAS 372, 443 </li>
+</div>
+      <div class="footer">
+  <p><hr/></p>
+</div>
+ 
+    <!-- %%%%%%%%%%%%%%%%  SCRIPTS %%%%%%%%%%%%%%%%% https://stackoverflow.com/questions/3531314/should-i-write-script-in-the-body-or-the-head-of-the-html
+      Place script that impacts the render of the page at the end of the body (before the body closure).-->
+
+    <script src="Astronomy/collapsible.js"></script>
+  </body>
+</html>
