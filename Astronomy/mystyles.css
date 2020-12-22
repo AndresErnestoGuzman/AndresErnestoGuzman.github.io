@@ -35,10 +35,11 @@
   width: 95%;
   margin: 0 auto;
 }
-* {
+/*Esto genera errores en mathjax, por eso comentado.*/
+/** {
   box-sizing: border-box;
   font-family: Arial, Helvetica, sans-serif;
-}
+}*/
 
 body {
   margin: 0;
