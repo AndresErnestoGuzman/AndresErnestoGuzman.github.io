@@ -17,10 +17,17 @@
     </div>
     
     <div class="content">
+      \(
+        \newcommand{\effbw}[1]{\Delta {#1}_{\rm eff}}
+        \newcommand{\var}{{\rm var}}
+        \newcommand{\cov}{{\rm cov}}
+      \)
+
+
       <h2>Spectral resolution and Hanning smoothing in ALMA.</h2>
       <p>
         The autocorrelation signal from where the spectrum is derived is modified 
-        by a window function called a Hann window. We will denote  \(w \leftrightharpoons W\), repectively, 
+        by a symmetric window function called a Hann window. We will denote  \(w \leftrightharpoons W\), repectively, 
         the Hann window function in the lag-autocorrelation domain and its Fourier transform, 
         in the frequency domain. That is 
         \begin{equation}
@@ -30,30 +37,56 @@
        <p>
         Explicitely, Hann window and its Fourier transform are 
       \begin{equation}
-      w(x)=\begin{cases}
-      \cos^2\left(\pi x\right)&|x|\le1/2\\
-      0& \neg \end{cases} \leftrightharpoons \frac{\sin(\pi f)}{2\pi f(1-f^2)}=W(f)~~.
+      \boxed{w(x/T)=\begin{cases}
+      \cos^2\left(\pi x/T\right)&|x/T|\le 1/2\\
+      0& \neg \end{cases} }\leftrightharpoons \boxed{\frac{T\sin(\pi \xi)}{2\pi \xi(1-\xi^2)}=W(fT)T}~~,\label{eq-fourier-hann}
       \end{equation} 
+      where the \(\xi=f T\) and the FWHM of the function on the right is \(2/T\).
+      We will refer to the function on the left (in the lag-autocorrelation domain)
+       as the "Hann-window" and the second (in the frequency-spectral domain) as the "Hann-function."
     </p>
 
     <p>We will assume that the astronomical spectral signal consist of a deterministic signal plus white noise, that is, 
     \begin{equation} S  = \mathcal{D}+\partial B(\sigma^2)\label{eq-S}~~,\end{equation} 
     where the white noise has the property that, for two square integrable functions \(g\) and \(h\),
-    \begin{equation}{\rm cov}\left(\int_{-\infty}^\infty g(f)\partial B(\sigma^2) (f) df,
+    \begin{equation}
+    {\rm cov}\left(\int_{-\infty}^\infty g(f)\partial B(\sigma^2) (f) df,
     \int_{-\infty}^\infty h(f)\partial B(\sigma^2) (f) df\right)=
-        \sigma^2\int_{-\infty}^\infty g(f)h(f)df~~.\label{eq-cov}\end{equation}
-      In particular, this means that the integral of the signal integrated over an interval \(\Delta f\) has variance 
-   \begin{equation}{\rm var}\left(\int_{\Delta f}S(f)df\right)=\sigma^2\Delta f\label{eq-var}\end{equation}.
- Since in the following we will be mostly interested in the noise of the signal, we will assume \(\mathcal{D}\equiv 0\).</p>
+        \sigma^2\int_{-\infty}^\infty g(f)h(f)df~~.\label{eq-cov}
+        \end{equation}
+      In particular, this means that the signal averaged over a square filter of width \(\Delta f\) has variance 
+   \begin{equation}
+   {\rm var}\left(\int_{\Delta f}\left(\frac{1}{\Delta f}\right)S(f)df\right)=\frac{\sigma^2}{\Delta f}~~.\label{eq-var}
+   \end{equation}
 
+ Since in the following we will be mostly interested in the noise of the signal, we will assume \(\mathcal{D}\equiv 0\).</p>
   <p>
+    Refer to the figure below. It represents a section of an spectrum with noisy channels. The 
+    value of each channel is given by the convolution of the Hann-function with the true spectrum, represented in gray. 
+    Note that the true effective bandwidth of each channel depends on the FWHM of the convolution function, and that this
+    convolution creates some statistical correlation between channels.  
     <figure>
     <img src="Astronomy/alma/gg.png"
          alt="illustration">
-    <figcaption>The Fourier transform Hann</figcaption>
+    <figcaption><em>The red curve shows the Hann-function  with an FWHM = \(2\Delta \nu\), where \(\Delta\nu\) is the channel size.
+    The value of each channel represents the convolution of the true signal (\ref{eq-S}, represented by the noisy 
+  gray line in the background) with the Hann-function.</em></figcaption>
 </figure>
 </p>
-    
+
+<p>We will define the effective bandwidth of a filter analogously as the width \(\Delta f\) 
+  appears in the case of a square filter (\ref{eq-var}):
+  \begin{equation}
+  \effbw{f} = \frac{\sigma^2}{\var\left( W \star S\right)}~~, \label{eq-effbw}
+  \end{equation}
+  where \(\star\) represents convolution and the integral of the filter function \(W\) 
+   is assumed to be 1. Therefore, the effective bandwidth of the Hann-function filter is 
+  \begin{equation}\effbw{f} = \frac{\sigma^2}{\sigma^2 T \int^\infty_{-\infty}W(\xi)\star W(\xi)d\xi}
+            = \frac{1}{T}\int_{-T/2}^{T/2}\cos(\pi x)^4dx 
+            = \frac{8}{3T}=\frac{4\,{\rm FWHM}}{3}~~.
+  \end{equation}
+  In particular, if the FWHM is two times the channel size, \(\effbw{f}=(8/3)\times\Delta\nu \approx 2.667 \times\Delta\nu\).
+</p>    
     <div class="footer">
     </div>
   </body>
