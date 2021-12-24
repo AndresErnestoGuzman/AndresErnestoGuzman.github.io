@@ -27,13 +27,19 @@
                 \int_{-\infty}^\infty w(x) e^{-2\pi i x f} dx = W(f)~~.\label{eq-fourier}
         \end{equation}
       </p>
-      Explicitely, Hann window and its Fourier transform are 
+       <p>
+        Explicitely, Hann window and its Fourier transform are 
       \begin{equation}
       w(x)=\begin{cases}
       \cos^2\left(\pi x\right)&|x|\le1/2\\
       0& \neg \end{cases} \leftrightharpoons \frac{\sin(\pi f)}{2\pi f(1-f^2)}=W(f)~~.
       \end{equation} 
-      <p></p>
+    </p>
+
+    <p>We will assume that the astronomical spectral signal consist of a deterministic signal plus white noise, that is, 
+    \begin{equation} S  = \mathcal{D}+\partial B(\sigma^2)\label{eq-S}~~,\end{equation} 
+    where the white noise has the property that \[\cov\left(\int_{\-infty}^\infty\g(f)\partial B(\sigma^2) (f) df,
+    \int_{\-infty}^\infty\g(f)\partial B(\sigma^2) (f) dfright)\]</p>
 
     <div class="footer">
     </div>
