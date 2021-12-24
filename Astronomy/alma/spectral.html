@@ -38,9 +38,22 @@
 
     <p>We will assume that the astronomical spectral signal consist of a deterministic signal plus white noise, that is, 
     \begin{equation} S  = \mathcal{D}+\partial B(\sigma^2)\label{eq-S}~~,\end{equation} 
-    where the white noise has the property that \[\cov\left(\int_{\-infty}^\infty\g(f)\partial B(\sigma^2) (f) df,
-    \int_{\-infty}^\infty\g(f)\partial B(\sigma^2) (f) dfright)\]</p>
+    where the white noise has the property that, for two square integrable functions \(g\) and \(h\),
+    \begin{equation}{\rm cov}\left(\int_{-\infty}^\infty g(f)\partial B(\sigma^2) (f) df,
+    \int_{-\infty}^\infty h(f)\partial B(\sigma^2) (f) df\right)=
+        \sigma^2\int_{-\infty}^\infty g(f)h(f)df~~.\label{eq-cov}\end{equation}
+      In particular, this means that the integral of the signal integrated over an interval \(\Delta f\) has variance 
+   \begin{equation}{\rm var}\left(\int_{\Delta f}S(f)df\right)=\sigma^2\Delta f\label{eq-var}\end{equation}.
+ Since in the following we will be mostly interested in the noise of the signal, we will assume \(\mathcal{D}\equiv 0\).</p>
 
+  <p>
+    <figure>
+    <img src="Astronomy/alma/gg.png"
+         alt="illustration">
+    <figcaption>The Fourier transform Hann</figcaption>
+</figure>
+</p>
+    
     <div class="footer">
     </div>
   </body>
