@@ -29,16 +29,16 @@
 
       <h2>Spectral resolution and Hanning smoothing in ALMA.</h2>
       <p>
-        The autocorrelation signal from where the spectrum is derived is modified 
-        by a symmetric window function called a Hann window. We will denote  \(w \leftrightharpoons W\), repectively, 
-        the Hann window function in the lag-autocorrelation domain and its Fourier transform, 
+        The autocorrelation signal from where the spectrum is derived is weighted  
+        by a symmetric window function called a Hann window. We will denote  \(w \leftrightharpoons W\), respectively, 
+        the Hann window function in the lag-autocorrelation domain and its Fourier transform
         in the frequency domain. That is 
         \begin{equation}
                 \int_{-\infty}^\infty w(x) e^{-2\pi i x f} dx = W(f)~~.\label{eq-fourier}
         \end{equation}
       </p>
        <p>
-        Explicitely, Hann window and its Fourier transform are 
+        Explicitely, the Hann window and its Fourier transform are 
       \begin{equation}
       {w_T(x)=w(x/T)=\begin{cases}
       \cos^2\left(\pi x/T\right)&|x/T|\le 1/2\\
@@ -46,7 +46,8 @@
       \end{equation} 
       where  \(\xi=f T\) and the FWHM of the function on the right is \(2/T\).
       We will refer to the function on the left (in the lag-autocorrelation domain)
-       as the "Hann-window" and the second (in the frequency-spectral domain) as the "Hann-function."
+       as the "Hann-window" and the second (in the frequency-spectral domain) as the "Hann-function." By the convolution theorem, the Hann-window 
+       weighting the autocorrelation signal is equivalent to the Hann-function convolving the spectrum of the signal.
     </p>
 
     <p>We will assume that the astronomical spectral signal consist of a deterministic signal plus white noise, that is, 
@@ -77,8 +78,8 @@
 </figure>
 </p>
 
-<p>We will define the effective bandwidth of a filter analogously as the width \(\Delta f\) 
-  appears in the case of a square filter (\ref{eq-var}):
+<p>We will define the effective bandwidth of a filter analogously to the width \(\Delta f\) 
+  as it appears in the case of a square filter (\ref{eq-var}):
   \begin{equation}
   \effbw{f} = \frac{\sigma^2}{\var\left( W_T \star S\right)}~~, \label{eq-effbw}
   \end{equation}
@@ -103,7 +104,7 @@ In addition, the default spectral setting includes binning of two channels. </p>
   is given by 
   \begin{equation}\begin{aligned}
   \cov\left((W_T \star S)(f_1), (W_T \star S)(f_2)\right) &= \cov\left(\int_{-\infty}^\infty T W(T f_1-T f) S(f) df,  \int_{-\infty}^\infty T W(T f_2-T f) S(f) df \right)
-    &= \sigma^2 T^2 \int_{-\infty}^\infty W(T f_1-T f) W(T f_2-T f)df  \\
+    = \sigma^2 T^2 \int_{-\infty}^\infty W(T f_1-T f) W(T f_2-T f)df  \\
     &=  \sigma^2 T \int_{-\infty}^\infty W(-\xi) W(T \df-\xi)d\xi \\
     &=  \sigma^2 T \int_{-\infty}^\infty W(\xi) W(T \df-\xi)d\xi  =  \sigma^2 T \, (W\star W)(T\df)~~.\label{eq-cov-WT}
   \end{aligned}\end{equation}
@@ -132,7 +133,7 @@ In addition, the default spectral setting includes binning of two channels. </p>
     (N-1)\frac{1}{4}+(N-2)\frac{1}{16} 
     \right)\right) = \frac{\sigma^2}{N^2\Dnu} \left(N-\frac{3}{4}\right)~~.\label{eq-var-Nchan}
   \end{equation}
-  With this equation we can finally derive the effective number of channels of the sum of \(N\) adjacent channels where each signal comes from 
+  With this equation we can finally derive the effective number of channels associated with the  sum of \(N\) adjacent channels. The value of each  channel comes from 
   a Hanning filtered spectrum with a FWHM of two channels:
   \begin{equation}
   { N_{\rm eff}} = \begin{cases} \frac{8}{3} & N=1 \\ \frac{N^2}{N-\frac{3}{4}} & N>1\end{cases}~~.
