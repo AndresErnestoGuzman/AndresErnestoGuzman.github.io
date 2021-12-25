@@ -21,6 +21,8 @@
         \newcommand{\effbw}[1]{\Delta {#1}_{\rm eff}}
         \newcommand{\var}{{\rm var}}
         \newcommand{\cov}{{\rm cov}}
+        \newcommand{\df}{{\delta\!f}}
+        \newcommand{\dnu}{{\delta\!\nu}}\newcommand{\Dnu}{{\Delta\!\nu}}
       \)
 
 
@@ -37,11 +39,11 @@
        <p>
         Explicitely, Hann window and its Fourier transform are 
       \begin{equation}
-      \boxed{w(x/T)=\begin{cases}
+      {w_T(x)=w(x/T)=\begin{cases}
       \cos^2\left(\pi x/T\right)&|x/T|\le 1/2\\
-      0& \neg \end{cases} }\leftrightharpoons \boxed{\frac{T\sin(\pi \xi)}{2\pi \xi(1-\xi^2)}=W(fT)T}~~,\label{eq-fourier-hann}
+      0& \neg \end{cases} }\leftrightharpoons {\frac{T\sin(\pi \xi)}{2\pi \xi(1-\xi^2)}=W(fT)T = W_T(f)}~~,\label{eq-fourier-hann}
       \end{equation} 
-      where the \(\xi=f T\) and the FWHM of the function on the right is \(2/T\).
+      where  \(\xi=f T\) and the FWHM of the function on the right is \(2/T\).
       We will refer to the function on the left (in the lag-autocorrelation domain)
        as the "Hann-window" and the second (in the frequency-spectral domain) as the "Hann-function."
     </p>
@@ -68,7 +70,7 @@
     <figure>
     <img src="Astronomy/alma/gg.png"
          alt="illustration">
-    <figcaption><em>The red curve shows the Hann-function  with an FWHM = \(2\Delta \nu\), where \(\Delta\nu\) is the channel size.
+    <figcaption><em>The red curve shows the Hann-function  with an FWHM = \(2\Dnu\), where \(\Dnu\) is the channel size.
     The value of each channel represents the convolution of the true signal (\ref{eq-S}, represented by the noisy 
   gray line in the background) with the Hann-function.</em></figcaption>
 </figure>
@@ -77,16 +79,74 @@
 <p>We will define the effective bandwidth of a filter analogously as the width \(\Delta f\) 
   appears in the case of a square filter (\ref{eq-var}):
   \begin{equation}
-  \effbw{f} = \frac{\sigma^2}{\var\left( W \star S\right)}~~, \label{eq-effbw}
+  \effbw{f} = \frac{\sigma^2}{\var\left( W_T \star S\right)}~~, \label{eq-effbw}
   \end{equation}
   where \(\star\) represents convolution and the integral of the filter function \(W\) 
    is assumed to be 1. Therefore, the effective bandwidth of the Hann-function filter is 
   \begin{equation}\effbw{f} = \frac{\sigma^2}{\sigma^2 T \int^\infty_{-\infty}W(\xi)\star W(\xi)d\xi}
-            = \frac{1}{T}\int_{-T/2}^{T/2}\cos(\pi x)^4dx 
+            = \frac{1}{T\int_{-T/2}^{T/2}\cos(\pi x)^4dx }
             = \frac{8}{3T}=\frac{4\,{\rm FWHM}}{3}~~.
   \end{equation}
-  In particular, if the FWHM is two times the channel size, \(\effbw{f}=(8/3)\times\Delta\nu \approx 2.667 \times\Delta\nu\).
-</p>    
+  In particular, if the FWHM is two times the channel size, \(\effbw{f}=(8/3)\times\Dnu \approx 2.667 \times\Dnu\).
+</p>   
+<p> That is the usual situation in ALMA. The Hanning-function used to filter the spectral signal has a FWHM 
+of two channels, which means that the effective width of each channel is actually \(8/3\) times the channel width. 
+In addition, the default spectral setting includes binning of two channels. </p>
+
+  <p> Determining the variance and noise properties of the addition of several channels
+  entails knowing the covariance between the signals measured at different frequencies. 
+  Note that the  Hanning-function extends to infinity, so in principle signals separated 
+  by an arbitrary amount are always correlated to some degree. This is not actually the case when the 
+  channel size is conmensurate with the FWHM of the Hanning-function, as we will see.
+  The covariance between signals observed at frequencies \(f_1\) and \(f_2\), separated by \(\df\), 
+  is given by 
+  \begin{equation}\begin{aligned}
+  \cov\left((W_T \star S)(f_1), (W_T \star S)(f_2)\right) &= \cov\left(\int_{-\infty}^\infty T W(T f_1-T f) S(f) df,  \int_{-\infty}^\infty T W(T f_2-T f) S(f) df \right)
+    &= \sigma^2 T^2 \int_{-\infty}^\infty W(T f_1-T f) W(T f_2-T f)df  \\
+    &=  \sigma^2 T \int_{-\infty}^\infty W(-\xi) W(T \df-\xi)d\xi \\
+    &=  \sigma^2 T \int_{-\infty}^\infty W(\xi) W(T \df-\xi)d\xi  =  \sigma^2 T \, (W\star W)(T\df)~~.\label{eq-cov-WT}
+  \end{aligned}\end{equation}
+  With the help of the fact that  \((W\star W) \leftrightharpoons w^2\), we derive 
+  \[ (W\star W)(\xi)  = \frac{3 \sin (\pi  {\xi})}{2 \pi {\xi} ({\xi}-2) ({\xi}-1)  ({\xi}+1) ({\xi}+2)}~~,\]
+  thus
+  \begin{equation} 
+  \cov\left((W_T \star S)(f_1), (W_T \star S)(f_2)\right) = \sigma^2 T  \frac{3 \sin (\pi  {\df T})}{2 \pi {\df T} ({\df T}-2) ({\df  T}-1)  ({\df  T}+1) ({\df T}+2)}~~.
+  \end{equation}
+  The last equation is general, but we focus on \(\df\) conmensurate with \(T\), particularly, when \(\df = m\Dnu\)
+   and \(\Dnu={\rm FWHM}/2=1/T\). In this case,
+   \begin{equation}\cov\left((W_T \star S)(f+m\Dnu), (W_T \star S)(f)\right) 
+   = \frac{\sigma^2}{\Dnu}
+   \begin{cases}
+  3/8 & m=0\\
+  1/4 & |m|=1\\
+  1/16 & |m|=2\\
+  0 & \neg
+   \end{cases}~~.\label{eq-cov-chan}\end{equation}
+  </p>
+
+  <p> Using (\ref{eq-cov-chan}), we can calculate the variance of the average signal of \(N\ge2\) <em> adjacent</em> channels
+  \begin{equation}
+  \var\left(\frac{1}{N}\sum_{k=0}^{N-1} (W\star S)(k \Dnu)\right) = 
+    \frac{\sigma^2}{N^2\Dnu} \left( N\frac{3}{8} + 2 \left(
+    (N-1)\frac{1}{4}+(N-2)\frac{1}{16} 
+    \right)\right) = \frac{\sigma^2}{N^2\Dnu} \left(N-\frac{3}{4}\right)~~.\label{eq-var-Nchan}
+  \end{equation}
+  With this equation we can finally derive the effective number of channels of the sum of \(N\) adjacent channels where each signal comes from 
+  a Hanning filtered spectrum with a FWHM of two channels:
+  \begin{equation}
+  { N_{\rm eff}} = \begin{cases} \frac{8}{3} & N=1 \\ \frac{N^2}{N-\frac{3}{4}} & N>1\end{cases}~~.
+  \end{equation}
+  We can compare
+<table>
+  <tr>
+    <td><b>1</td><td><b>2</td> <td>3</td><td><b>4</td><td>5</td><td>6</td><td>7</td><td><b>8</td>
+  </tr>
+  <tr>
+    <td><b>2.667</td><td><b>3.2</td><td>4.</td><td><b>4.92308</td><td>5.88235</td><td>6.85714</td><td>7.84</td><td><b>8.82759</td> 
+</table>
+ </p>
+
+
     <div class="footer">
     </div>
   </body>

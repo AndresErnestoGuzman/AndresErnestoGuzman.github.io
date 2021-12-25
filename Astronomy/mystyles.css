@@ -94,11 +94,13 @@ hr {
 }
 p { margin-left:2em; margin-right:2em; /* Or another measurement unit, like px */ }
 li{margin-left:3em;}
-
+  table, th, td {
+  border:1px solid black;
+}
 /*POR MIENTRAS*/
-mjx-mtr {
+/*mjx-mtr {
     display: table-row;
-  }
+  }*/
 
 
 
