@@ -137,12 +137,12 @@ In addition, the default spectral setting includes binning of two channels. </p>
   With this equation we can finally derive the effective number of channels associated with the  sum of \(N\) adjacent channels. The value of each  channel comes from 
   a Hanning filtered spectrum with a FWHM of two channels:
   \begin{equation}
-  { N_{\rm eff}} = \begin{cases} \frac{8}{3} & N=1 \\ \frac{N^2}{N-\frac{3}{4}} & N>1\end{cases}~~.\label{eq-neffb-hann}
+  { N_{\rm eff}} = \begin{cases} \frac{8}{3} & N=1 \\ \frac{N^2}{N-\frac{3}{4}} & N>1\end{cases}~~.\label{eq-neff-hann}
   \end{equation}
   We can confirm the numbers obtained with this formula with those given <a href="https://safe.nrao.edu/wiki/pub/Main/ALMAWindowFunctions/Note_on_Spectral_Response_V2.pdf">
   in this document.</a>
 <table>
-  <caption><i>Hanning filtering effective bandwith (Eq. \ref{eq-neffb-hann}, \(b=1\))</i></caption>
+  <caption><i>Hanning filtering effective bandwith (Eq. \ref{eq-neff-hann})</i></caption>
   <tr>
     <td><b>1</td><td><b>2</td> <td>3</td><td><b>4</td><td>5</td><td>6</td><td>7</td><td><b>8</td><td><b>16</td>
   </tr>
