@@ -27,7 +27,8 @@
       \)
 
 
-      <h2>Spectral resolution and Hanning smoothing in ALMA.</h2>
+      <h2>Spectral Response Functions in ALMA</h2>
+      <h3> General Case and Hanning Smoothing</h3>
       <p>
         The autocorrelation signal from where the spectrum is derived is weighted  
         by a symmetric window function called a Hann window. We will denote  \(w \leftrightharpoons W\), respectively, 
@@ -70,7 +71,7 @@
     Note that the true effective bandwidth of each channel depends on the FWHM of the convolution function, and that this
     convolution creates some statistical correlation between channels.  
     <figure>
-    <img src="Astronomy/alma/gg.png"
+    <img src="Astronomy/alma/gghann.png"
          alt="illustration">
     <figcaption><em>The red curve shows the Hann-function  with an FWHM = \(2\Dnu\), where \(\Dnu\) is the channel size.
     The value of each channel represents the convolution of the true signal (\ref{eq-S}, represented by the noisy 
@@ -112,7 +113,7 @@ In addition, the default spectral setting includes binning of two channels. </p>
   \[ (W\star W)(\xi)  = \frac{3 \sin (\pi  {\xi})}{2 \pi {\xi} ({\xi}-2) ({\xi}-1)  ({\xi}+1) ({\xi}+2)}~~,\]
   thus
   \begin{equation} 
-  \cov\left((W_T \star S)(f_1), (W_T \star S)(f_2)\right) = \sigma^2 T  \frac{3 \sin (\pi  {\df T})}{2 \pi {\df T} ({\df T}-2) ({\df  T}-1)  ({\df  T}+1) ({\df T}+2)}~~.
+  \cov\left((W_T \star S)(f_1), (W_T \star S)(f_2)\right) = \sigma^2 T  \frac{3 \sin (\pi  {\df T})}{2 \pi {\df T} ({\df T}-2) ({\df  T}-1)  ({\df  T}+1) ({\df T}+2)}~~.\label{eq-covariance}
   \end{equation}
   The last equation is general, but we focus on \(\df\) conmensurate with \(T\), particularly, when \(\df = m\Dnu\)
    and \(\Dnu={\rm FWHM}/2=1/T\). In this case,
@@ -142,17 +143,58 @@ In addition, the default spectral setting includes binning of two channels. </p>
   in this document.</a>
 <table>
   <tr>
-    <td><b>1</td><td><b>2</td> <td>3</td><td><b>4</td><td>5</td><td>6</td><td>7</td><td><b>8</td>
+    <td><b>1</td><td><b>2</td> <td>3</td><td><b>4</td><td>5</td><td>6</td><td>7</td><td><b>8</td><td><b>16</td>
   </tr>
   <tr>
-    <td><b>2.667</td><td><b>3.2</td><td>4.</td><td><b>4.92308</td><td>5.88235</td><td>6.85714</td><td>7.84</td><td><b>8.82759</td> 
+    <td><b>2.667</td><td><b>3.2</td><td>4.</td><td><b>4.92308</td><td>5.88235</td><td>6.85714</td><td>7.84</td><td><b>8.82759</td> <td><b>16.78689</td>
 </table></p>
- <p>Finally, the effect of binning  multiplies the number of added channels  by the binning number; and at the same time divides the effective number of channels by the binning number. 
+ <p>Finally, the effect of binning or "online averaging"  multiplies the number of added channels  by the binning number; 
+  and at the same time divides the effective number of channels by this same number. 
 That is, if the spectra is binned by a number \(b\), then the effective number of channels of the sum of \(N\) adjacent binned channels is
 \begin{equation}
   \boxed{{ N_{\rm eff}(b)} = \begin{cases} \frac{8}{3} & N,b=1 \\ \frac{N^2b}{Nb-\frac{3}{4}} & b>1\end{cases}~~.}
   \end{equation}
   ALMA observations usually use \(b=2\), so the effective bandwith of a single channel is 1.6 times the channel size.
+</p>
+<h3> Uniform, Welch, and Cosine Smoothing</h3>
+
+  <h4>Welch</h4>
+  <figure>
+    <img src="Astronomy/alma/ggwelch.png"
+         alt="illustration">
+    <figcaption><em>The red curve shows the Welch function.
+    The value of each channel represents the convolution of the true signal with this filter. </em></figcaption>
+</figure>
+<p>The Welch window (\({\rm welsh(x)}\)) in the lag/autocorrelation domain consist of a parabolic response between the ends of the window limit. 
+Note that the Welch function (\({\rm Welsh}(f)\leftrightharpoons{\rm welsh}(x)\))is narrower than the corresponding Hann function, when both associated windows have the same support.  The 
+covariance between the function responses \eqref{eq-covariance} is 
+\begin{equation} 
+  \cov\left(({\rm Welch}_T \star S)(f_1), ({\rm Welsh}_T \star S)(f_2)\right) = -8 \frac{ \left(\left(\pi ^2 (\df T)^2-3\right) \sin (\pi  (\df T))+3 \pi 
+   {\df T} \cos (\pi  {\df T})\right)}{\pi ^5 (\df T)^5}~~.\label{eq-covariance-Welsh}
+  \end{equation}
+  We focus on \(\df\) conmensurate with \(T\), particularly, when \(\df = m\Dnu\): 
+  \[\cov\left(({\rm Welch}_T \star S)(f), ({\rm Welsh}_T \star S)(f+m\Dnu)\right) =\begin{cases}
+  \frac{8}{15} & m=0\\
+  -24\frac{(-1)^m}{\pi^4 m^4} & \neg\\
+  \end{cases}~~.\]
+  In this case, however, the FWHM of the Welsh function is not conmensurate with the 
+  channel size.   
+</p>
+<p> Note that in the previous expression, in contrast with other filters, the covariance between adjacent channels is never zero. This means that the effective bandwidth of \(N\) channels 
+will require the sum of \(N\) terms for exact calculation. Including the effect of binning, we have
+\begin{equation}
+\boxed{N_{\rm eff., Welch}(b) = \begin{cases}
+\frac{15}{8} & N,b=1\\
+N^2b\left(Nb\frac{8}{15}-\frac{48}{\pi^4}\sum_{k=1}^{Nb}(Nb-m)\frac{(-1)^m}{m^4}\right)^{-1} & \neg\end{cases}}~~.
+\end{equation}
+<table>
+  <tr>
+    <td><b>1</td><td><b>2</td> <td>3</td><td><b>4</td><td>5</td><td>6</td><td>7</td><td><b>8</td><td><b>16</td>
+  </tr>
+  <tr>
+<td><b>1.875</td><td><b>2.56503</td><td>3.52287</td><td><b>4.49928</td><td>5.48777</td><td>6.47968</td><td>7.47441</td><td><b>8.47034</td><td><b>16.4569</td>
+</tr>
+</table>
 </p>
 
     <div class="footer">
