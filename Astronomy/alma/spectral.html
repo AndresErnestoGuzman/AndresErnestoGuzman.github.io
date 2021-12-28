@@ -30,12 +30,13 @@
       <h2>Spectral Response Functions in ALMA</h2>
       <h3> General Case and Hanning Smoothing</h3>
       <p>
-        The autocorrelation signal from where the spectrum is derived is weighted  
-        by a symmetric window function called a Hann window. We will denote  \(w \leftrightharpoons W\), respectively, 
+        The autocorrelation signal from where the spectrum of the source is derived is weighted and trimmed 
+        by a symmetric window function called a Hann window. 
+        We will denote by  \(w\) and \(W\) 
         the Hann window function in the lag-autocorrelation domain and its Fourier transform
-        in the frequency domain. That is 
+        in the frequency domain, respectively. That is 
         \begin{equation}
-                \int_{-\infty}^\infty w(x) e^{-2\pi i x f} dx = W(f)~~.\label{eq-fourier}
+               \(w \leftrightharpoons W\)\Longleftrightarrow \int_{-\infty}^\infty w(x) e^{-2\pi i x f} dx = W(f)~~.\label{eq-fourier}
         \end{equation}
       </p>
        <p>
@@ -45,7 +46,7 @@
       \cos^2\left(\pi x/T\right)&|x/T|\le 1/2\\
       0& \neg \end{cases} }\leftrightharpoons {\frac{T\sin(\pi \xi)}{2\pi \xi(1-\xi^2)}=W(fT)T = W_T(f)}~~,\label{eq-fourier-hann}
       \end{equation} 
-      where  \(\xi=f T\) and the FWHM of the function on the right is \(2/T\).
+      where  \(\xi=f T\). The FWHM of \(W\) is \(2/T\).
       We will refer to the function on the left (in the lag-autocorrelation domain)
        as the "Hann-window" and the second (in the frequency-spectral domain) as the "Hann-function." By the convolution theorem, the Hann-window 
        weighting the autocorrelation signal is equivalent to the Hann-function convolving the spectrum of the signal.
@@ -63,8 +64,8 @@
    \begin{equation}
    {\rm var}\left(\int_{\Delta f}\left(\frac{1}{\Delta f}\right)S(f)df\right)=\frac{\sigma^2}{\Delta f}~~.\label{eq-var}
    \end{equation}
-
- Since in the following we will be mostly interested in the noise of the signal, we will assume \(\mathcal{D}\equiv 0\).</p>
+    Since in the following we will be mostly interested in the noise of the signal, we can assume \(\mathcal{D}\equiv 0\).</p>
+ 
   <p>
     Refer to the figure below. It represents a section of an spectrum with noisy channels. The 
     value of each channel is given by the convolution of the Hann-function with the true spectrum, represented in gray. 
