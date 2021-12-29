@@ -135,7 +135,7 @@ In addition, the default spectral setting includes binning of two channels. </p>
     (N-1)\frac{1}{4}+(N-2)\frac{1}{16} 
     \right)\right) = \frac{\sigma^2}{N^2\Dnu} \left(N-\frac{3}{4}\right)~~.\label{eq-var-Nchan}
   \end{equation}
-  With this equation we can finally derive the effective number of channels associated with the  sum of \(N\) adjacent channels. The value of each  channel comes from 
+  With this equation we can finally derive the effective number of channels associated with the  average of \(N\) adjacent channels. The value of each  channel comes from 
   a Hanning filtered spectrum with a FWHM of two channels:
   \begin{equation}
   { N_{\rm eff}} = \begin{cases} \frac{8}{3} & N=1 \\ \frac{N^2}{N-\frac{3}{4}} & N>1\end{cases}~~.\label{eq-neff-hann}
@@ -152,7 +152,7 @@ In addition, the default spectral setting includes binning of two channels. </p>
 </table></p>
  <p>Finally, the effect of binning or "online averaging"  multiplies the number of added channels  by the binning number; 
   and at the same time divides the effective number of channels by this same number. 
-That is, if the spectra is binned by a number \(b\), then the effective number of channels of the sum of \(N\) adjacent binned channels is
+That is, if the spectra is binned by a number \(b\), then the effective number of channels associated with the average of \(N\) adjacent binned channels is
 \begin{equation}
   \boxed{{ N_{\small \rm eff., Hann}(b)} = \begin{cases} \frac{8}{3} & N,b=1 \\ \frac{N^2b}{Nb-\frac{3}{4}} & b>1\end{cases}~~.}
   \end{equation}
@@ -176,10 +176,11 @@ That is, if the spectra is binned by a number \(b\), then the effective number o
       \end{cases}~~,\label{eq-covariance-Uni}
     \end{aligned}\end{equation}
     where the last equality is valid when \(\df T = m\). Therefore, the effective 
-    number of channels when adding adjacent channels does not change
+    number of channels associated with the average of \(N\) adjacent channels is \(N\) as well, or
     \begin{equation}
     \boxed{N_{\rm \small eff., Uniform}(b) = N}~~.
     \end{equation}
+    Channels are uncorrelated in the sense of zero covariance, so there is no effect of binning either.
   </p>
 
   <h4>Welch</h4>
@@ -212,7 +213,6 @@ will require the sum of \(N\) terms for exact calculation. Including the effect 
 N^2b\left(Nb\frac{8}{15}-\frac{48}{\pi^4}\sum_{k=1}^{Nb}(Nb-m)\frac{(-1)^m}{m^4}\right)^{-1} & \neg\end{cases}}~~.\label{eq-neffb-welch}
 \end{equation}
 </p>
-
 
 <p>
 The effective bandwith  factors for Welch filtering obtained using Equation \eqref{eq-neffb-welch} are in the Table below. Boldface numbers can be 
