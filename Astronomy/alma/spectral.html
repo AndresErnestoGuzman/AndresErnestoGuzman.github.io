@@ -110,6 +110,9 @@ In addition, the default spectral setting includes binning of two channels. </p>
     &=  \sigma^2 T \int_{-\infty}^\infty W(-\xi) W(T \df-\xi)d\xi \\
     &=  \sigma^2 T \int_{-\infty}^\infty W(\xi) W(T \df-\xi)d\xi  =  \sigma^2 T \, (W\star W)(T\df)~~.\label{eq-cov-WT}
   \end{aligned}\end{equation}
+  Note that implicitly we already assumed the stationarity of the white noise noise and , consistently, the covariance in the l.h.s. of Equation \eqref{eq-cov-WT} depends only on the 
+  difference \(\df=f_2-f_1\). Furthermore, since \(W\) is symmetric, covariance depends only on \(|df|\).</p>
+  <p> 
   With the help of the fact that  \((W\star W) \leftrightharpoons w^2\), we derive 
   \[ (W\star W)(\xi)  = \frac{3 \sin (\pi  {\xi})}{2 \pi {\xi} ({\xi}-2) ({\xi}-1)  ({\xi}+1) ({\xi}+2)}~~,\]
   thus
@@ -129,12 +132,16 @@ In addition, the default spectral setting includes binning of two channels. </p>
   </p>
 
   <p> Using (\ref{eq-cov-chan}) and \eqref{eq-effbw}, we can calculate the variance of the average signal of \(N\ge2\) <em> adjacent</em> channels
-  \begin{equation}
-  \var\left(\frac{1}{N}\sum_{k=0}^{N-1} (W\star S)(k \Dnu)\right) = 
-    \frac{\sigma^2}{N^2\Dnu} \left( N\frac{3}{8} + 2 \left(
+  \begin{align}
+  \var\left(\frac{1}{N}\sum_{k=0}^{N-1} (W\star S)(k \Dnu)\right) &= 
+  \frac{1}{N^2}\left(\var\left((W\star S)(k \Dnu)\right)+\sum_{j,k}^{N-1} \cov\left( (W\star S)(k \Dnu),(W\star S)(j \Dnu)\right)\right)
+   \nonumber\\ 
+  &= \frac{1}{N^2}\left(\var\left((W\star S)(k \Dnu)\right)+2\sum_{m=1}^{N-1} m\,\cov\left( (W\star S)(m \Dnu),(W\star S)(0)\right)\right)
+   \nonumber\\ 
+    &= \frac{\sigma^2}{N^2\Dnu} \left( N\frac{3}{8} + 2 \left(
     (N-1)\frac{1}{4}+(N-2)\frac{1}{16} 
     \right)\right) = \frac{\sigma^2}{N^2\Dnu} \left(N-\frac{3}{4}\right)~~.\label{eq-var-Nchan}
-  \end{equation}
+  \end{align}
   With this equation we can finally derive the effective number of channels associated with the  average of \(N\) adjacent channels. The value of each  channel comes from 
   a Hanning filtered spectrum with a FWHM of two channels:
   \begin{equation}
