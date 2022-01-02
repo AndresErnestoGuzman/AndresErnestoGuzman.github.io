@@ -108,8 +108,9 @@ In addition, the default spectral setting includes binning of two channels. </p>
   \cov\left((W_T \star S)(f_1), (W_T \star S)(f_2)\right) &= \cov\left(\int_{-\infty}^\infty T W(T f_1-T f) S(f) df,  \int_{-\infty}^\infty T W(T f_2-T f) S(f) df \right)
     = \sigma^2 T^2 \int_{-\infty}^\infty W(T f_1-T f) W(T f_2-T f)df  \\
     &=  \sigma^2 T \int_{-\infty}^\infty W(-\xi) W(T \df-\xi)d\xi \\
-    &=  \sigma^2 T \int_{-\infty}^\infty W(\xi) W(T \df-\xi)d\xi  =  \sigma^2 T \, (W\star W)(T\df)~~.\label{eq-cov-WT}
-  \end{aligned}\end{equation}
+    &=  \sigma^2 T \int_{-\infty}^\infty W(\xi) W(T \df-\xi)d\xi  =  \sigma^2 T \, (W\star W)(T\df)~~.
+  \end{aligned}\label{eq-cov-WT}
+  \end{equation}
   Note that implicitly we already assumed the stationarity of the white noise noise and , consistently, the covariance in the l.h.s. of Equation \eqref{eq-cov-WT} depends only on the 
   difference \(\df=f_2-f_1\). Furthermore, since \(W\) is symmetric, covariance depends only on \(|df|\).</p>
   <p> 
@@ -131,7 +132,7 @@ In addition, the default spectral setting includes binning of two channels. </p>
    \end{cases}~~.\label{eq-cov-chan}\end{equation}
   </p>
 
-  <p> Using (\ref{eq-cov-chan}) and \eqref{eq-effbw}, we can calculate the variance of the average signal of \(N\ge2\) <em> adjacent</em> channels
+  <p> Using \eqref{eq-effbw} and \eqref{eq-cov-chan} and , we can calculate the variance of the average signal of \(N\ge2\) <em> adjacent</em> channels
   \begin{align}
   \var\left(\frac{1}{N}\sum_{k=0}^{N-1} (W\star S)(k \Dnu)\right) &= 
   \frac{1}{N^2}\left(\var\left((W\star S)(k \Dnu)\right)+\sum_{j,k}^{N-1} \cov\left( (W\star S)(k \Dnu),(W\star S)(j \Dnu)\right)\right)
@@ -150,7 +151,7 @@ In addition, the default spectral setting includes binning of two channels. </p>
   We can confirm the numbers obtained with this formula with those given <a href="https://safe.nrao.edu/wiki/pub/Main/ALMAWindowFunctions/Note_on_Spectral_Response_V2.pdf">
   in this document.</a>
 <table>
-  <caption><i>Hanning filtering effective bandwith (Eq. \ref{eq-neff-hann})</i></caption>
+  <caption><i>Hanning filtering effective bandwith (Equation \eqref{eq-neff-hann}</i></caption>
   <tr>
     <td><b>1</td><td><b>2</td> <td>3</td><td><b>4</td><td>5</td><td>6</td><td>7</td><td><b>8</td><td><b>16</td>
   </tr>
@@ -226,7 +227,7 @@ The effective bandwith  factors for Welch filtering obtained using Equation \eqr
 directly compared with the table on <a href="https://safe.nrao.edu/wiki/pub/Main/ALMAWindowFunctions/Note_on_Spectral_Response_V2.pdf">
   this document</a>.
   <table>
-    <caption><i>Welch filtering effective bandwith (Eq. \ref{eq-neffb-welch}, \(b=1\))</i></caption>
+    <caption><i>Welch filtering effective bandwith (Equation \eqref{eq-neffb-welch}, \(b=1\))</i></caption>
   <tr>
     <td><b>1</td><td><b>2</td> <td>3</td><td><b>4</td><td>5</td><td>6</td><td>7</td><td><b>8</td><td><b>16</td>
   </tr>
