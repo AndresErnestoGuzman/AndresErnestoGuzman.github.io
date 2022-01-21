@@ -79,7 +79,7 @@
   gray line in the background) with the Hann-function.</em></figcaption>
 </figure>
 </p>
-
+<h4>The effective bandwidth</h4>
 <p>We will define the effective bandwidth of a filter analogously to the width \(\Delta f\) 
   as it appears in the case of a square filter (\ref{eq-var}):
   \begin{equation}
@@ -166,6 +166,53 @@ That is, if the spectra is binned by a number \(b\), then the effective number o
   \end{equation}
   ALMA observations usually use \(b=2\), so the effective bandwith of a single channel is 1.6 times the channel size.
 </p>
+
+<h4> The effective spectral resolution and width of the spectral profile</h4>
+<p> As noted above, the channel size \(\Dnu\) defines where we actually sample the signal to obtain our data. 
+  It is not <em>necessarily </em> related with the FWHM of the Hanning function, but the calculation of effective bandwidths are greatly 
+simplified with our choice of \(2\Dnu=\)FWHM. If we were to choose a much narrower \(\Dnu\), then the nice correlation properties with between the channels would hold no more, but we may be 
+able to sample the Hannig function more finely. Let as assume for a moment that we sample the signal with very small channels. Furthermore, 
+we will explore the spectral response of our system not to noise this time, but to an infinitely narrow spectral signal. That is, we will ignore 
+ this time the white noise in Equation \eqref{eq-S} and assume that \(\mathcal{D}=F\delta(\nu-\nu_0)\).</p>
+
+ <p>The response of our system would show the infinitely narrow line as the Hanning function centered at \(\nu_0\). This implies that, in this setup, 
+  distinguishing infinitely narrow lines separated by less than the HWHM (FWHM/2) of the Hanning function becomes more difficult 
+  In this sense, the spectral resolution of our system is 
+ determined by the FWHM of the Hanning function and therefore, by convention, we may call the FWHM the <em> resolution width</em>.</p>
+
+ <p>What is the effect of the online averaging or binning on the resolution width? Let us assume  that our observed 
+  signal \(S\)  comes from the average  of \(N\) centered samplings separated by \(\Dnu\),  \(\Dnu=\)FWHM/2, that is,
+  \begin{equation}
+  S_{\rm obs}(f)=\frac{1}{N}\sum_{k=1}^N W_T(f-f_k)\star S(f) = \frac{1}{N}\sum_{k=1}^N \delta(f-f_k)\star (W_T\star S)(f) = \frac{1}{N}\sum_{k=1}^N W_T(f)\star S(f-f_k) ~~,\label{eq-Ssum}
+  \end{equation}
+  and \(f_k=\Dnu\left(k-\frac{(N+1)}{2}\right)\). Then, 
+   \begin{equation}
+   \begin{aligned}
+  S_{\rm obs}(f)&=\left(\frac{1}{N}\sum_{k=1}^N W_T(f-f_k)\right)\star S(f)\\
+&={W_{N,T}(f)}\star S(f)
+ \end{aligned}~~\label{eq-Sk}
+  \end{equation}
+  and the effect of binning is replacing the Hanning function by \(W_{N,T}\).In the following plot we show some of these functions.
+   <figure>
+    <img src="Astronomy/alma/gsum.png"
+         alt="illustration">
+    <figcaption><em>The equivalent filter functions \(\W_{N,T}) corresponding to a sum of equi-spaced Hann functions. </em></figcaption>
+</figure>
+</p>
+
+<p> The resolution bandwidth of the \(W_{N,T}\) filters are their FWHM.  These are 
+<table>
+  <caption><i>Averaged Hanning filter \(W_{N,T}\) resolution bandwidths </i></caption>
+  <tr>
+    <td><b>\(N=\)1</td><td><b>2</td> <td>3</td><td><b>4</td><td>5</td><td>6</td><td>7</td><td><b>8</td><td><b>16</td>
+  </tr>
+  <tr>
+    <td><b>2</td><td><b>2.31205</td><td>2.98926</td><td><b>3.96952</td><td>4.99764</td><td>6.01206</td><td>6.99913</td><td><b>7.99601</td><td><b>15.9995</td>
+</table>
+Again, the values at \(N\) equals powers of 2 can be confirmed <a href="https://safe.nrao.edu/wiki/pub/Main/ALMAWindowFunctions/Note_on_Spectral_Response_V2.pdf">
+  here</a>.
+</p>
+
 <h3> Uniform and Welch Filters</h3>
   
   <h4>Uniform</h4>
