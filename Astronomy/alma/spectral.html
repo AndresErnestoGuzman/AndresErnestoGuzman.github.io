@@ -95,7 +95,7 @@
 </p>   
 <p> That is the usual situation in ALMA. The Hanning-function used to filter the spectral signal has a FWHM 
 of two channels, which means that the effective width of each channel is actually \(8/3\) times the channel width. 
-In addition, the default spectral setting includes binning of two channels. </p>
+In addition, the default spectral setting includes online averaging of two channels. </p>
 
   <p> Determining the variance and noise properties of the addition of several channels
   entails knowing the covariance between the signals measured at different frequencies. 
@@ -158,9 +158,9 @@ In addition, the default spectral setting includes binning of two channels. </p>
   <tr>
     <td><b>2.667</td><td><b>3.2</td><td>4.</td><td><b>4.92308</td><td>5.88235</td><td>6.85714</td><td>7.84</td><td><b>8.82759</td> <td><b>16.78689</td>
 </table></p>
- <p>Finally, the effect of binning or "online averaging"  multiplies the number of added channels  by the binning number; 
+ <p>Finally, the effect of online averaging  multiplies the number of added channels  by the  number of channels averaged together; 
   and at the same time divides the effective number of channels by this same number. 
-That is, if the spectra is binned by a number \(b\), then the effective number of channels associated with the average of \(N\) adjacent binned channels is
+That is, if the spectra is averaged over a number of channels \(b\), then the effective number of channels associated with the average of \(N\) adjacent binned channels is
 \begin{equation}
   \boxed{{ N_{\small \rm eff., Hann}(b)} = \begin{cases} \frac{8}{3} & N,b=1 \\ \frac{N^2b}{Nb-\frac{3}{4}} & b>1\end{cases}~~.}
   \end{equation}
@@ -182,7 +182,7 @@ we will explore the spectral response of our system not to noise this time, but 
   In this sense, the spectral resolution of our system is 
  determined by the FWHM of the Hanning function and therefore, by convention, we may call the FWHM the <em> resolution width</em>.</p>
 
- <p>What is the effect of the online averaging or binning on the resolution width? Let us assume  that our observed 
+ <p>What is the effect of the online averaging  on the resolution width? Let us assume  that our observed 
   signal \(S\)  comes from the average  of \(N\) centered samplings separated by \(\Dnu\),  \(\Dnu=\)FWHM/2, that is,
   \begin{equation}
   S_{\rm obs}(f)=\frac{1}{N}\sum_{k=1}^N W_T(f-f_k)\star S(f) = \frac{1}{N}\sum_{k=1}^N \delta(f-f_k)\star (W_T\star S)(f) = \frac{1}{N}\sum_{k=1}^N W_T(f)\star S(f-f_k) ~~,\label{eq-Ssum}
@@ -194,7 +194,7 @@ we will explore the spectral response of our system not to noise this time, but 
 &={W_{N,T}(f)}\star S(f)
  \end{aligned}~~\label{eq-Sk}
   \end{equation}
-  and the effect of binning is replacing the Hanning function by \(W_{N,T}\). In the following plot we show some of these functions.
+  and the effect of online averaging is replacing the Hanning function by \(W_{N,T}\). In the following plot we show some of these functions.
    <figure>
     <img src="Astronomy/alma/gsum.png"
          alt="illustration">
@@ -239,7 +239,7 @@ Again, the values at \(N\) equals powers of 2 can be confirmed <a href="https://
     \begin{equation}
     \boxed{N_{\rm \small eff., Uniform}(b) = N}~~.
     \end{equation}
-    Channels are uncorrelated in the sense of zero covariance, so there is no effect of binning either.
+    Channels are uncorrelated in the sense of zero covariance, so there is no effect of the online averaging either.
   </p>
 
   <h4>Welch</h4>
@@ -265,7 +265,7 @@ covariance between the function responses \eqref{eq-covariance} is
   channel size.   
 </p>
 <p> Note that in the previous expression, in contrast with other filters, the covariance between adjacent channels is never zero. This means that the effective bandwidth of \(N\) channels 
-will require the sum of \(N\) terms for exact calculation. Including the effect of binning, we have
+will require the sum of \(N\) terms for exact calculation. Including the effect of online averaging, we have
 \begin{equation}
 \boxed{N_{\small \rm eff., Welch}(b) = \begin{cases}
 \frac{15}{8} & N,b=1\\
