@@ -27,24 +27,36 @@
       \)
       <h1>Signal leakage and interference in ALMA</h1>
       <h2>Introduction</h2>
-      The ALMA receivers are affected in some antennas by radio frequency interference coming from several sources. The most common of these are the local oscillator (LO) of the waver vapor radiometer (WVR), the yttrium iron garnet (YIG), and the second local oscillator (LO2). In the following we will focus on the WVR LO leakage (or WVR leakage for short) as the treatment and underlying phenomenon seems to be similar to that of the other leakages. The general internal reference within ALMA for information about this problem is collected in the non-conformant report #120 (JIRA tiket <a href=https://jira.alma.cl/browse/NCR-120>NCR-120</a>).
+      <p>The ALMA receivers are affected in some antennas by radio frequency interference coming from several sources. The most common of these are the local oscillator (LO) of the waver vapor radiometer (WVR), the yttrium iron garnet (YIG), and the second local oscillator (LO2). In the following we will focus on the WVR LO leakage (or WVR leakage for short) as the treatment and underlying phenomenon seems to be similar to that of the other leakages. The general internal reference within ALMA for information about this problem is collected in the non-conformant report #120 (JIRA tiket <a href=https://jira.alma.cl/browse/NCR-120>NCR-120</a>).<p>
 
       <h2> Phenomenology and detection</h2>
-      The WVR leakage is detected most of the times in the bandpass spectrum, usually as a narrow line feature seen in absorption in the bandpass calibration table. Particularly strong interference is also be evident in emission the system temperature (Tsys) spectrum. Because  observations  with the main 12m array use a lower spectral resolution for Tsys measurements, the spectral signature of the leakage is wider in the Tsys spectrum than that observed in the bandpass. The Tsys leakage signal affects the calibration creating sometimes wide ``wings'' seen in the bandpass solution.
+      <p>The WVR leakage is detected most of the times in the bandpass spectrum, usually as a narrow line feature seen in absorption in the bandpass calibration table. Particularly strong interference is also be evident in emission the system temperature (Tsys) spectrum. Because  observations  with the main 12m array use a lower spectral resolution for Tsys measurements, the spectral signature of the leakage is wider in the Tsys spectrum than that observed in the bandpass. The Tsys leakage signal affects the calibration creating sometimes wide ``wings'' seen in the bandpass solution. All this features are evident in the example shown in Figure (1a) and (1b).</p>
 
       
       <div class="row">
      <div class="column">
       <img src="Astronomy/alma/h_tsyscal.s6_1.tsyscal.tbl-tsys_vs_freq-time.DA42.spw19.png" alt="Tsys" style="width:100%">
-      <figcaption>Tsys spectrum showing the 91.66 GHz WVR LO leakage.</figcaption>
+      <figcaption>Figure (1a). Tsys spectrum of antenna DA42 showing the 91.66 GHz WVR LO leakage.</figcaption>
     </div>
     <div class="column">
       <img src="Astronomy/alma/hifa_bandpass.s13_3.spw25_27_29_31_33_35.channel.solintinf.bcal.tbl-amp_vs_freq.DA42.spw29.t00.png" alt="Bandpass" style="width:100%">
-    </div>
+          <figcaption>Figure (1b). Bandpass calibration table for antenna DA42 showing the 91.66 GHz WVR LO leakage in absorption together with the "wings" produced by the Tsys leakage signal.</figcaption>
+  </div>
     </div>
 
-
+    <p> After calibration, almost none of these features are seen. Part of the reason is that the leakage seems to be more of less stable (or only slowly variable). However, more careful examination of the data do indicate some calibration problems in the channels affected by the leakages.</p>
      
+    <div class="row">
+     <div class="column">
+      <img src="Astronomy/alma/AMPLITUDE-amp_vs_freq-XX_YY.png" alt="calibrated-ampcal" style="width:100%">
+      <figcaption>Figure (2a). Calibrated amplitude calibrator spectrum. After bandpass calibration, the leakage effect is apparently  removed.</figcaption>
+    </div>
+    <div class="column">
+      <img src="Astronomy/alma/PHASE-amp_vs_freq-XX_YY.png  " alt="calibrated-phasecal" style="width:100%">
+          <figcaption>Figure (2b). Calibrated phase calibrator spectrum. Leakage effect appears negligible. </figcaption>
+  </div>
+    </div>
+
 
 
       <h2> Simple theoretical model</h2>
