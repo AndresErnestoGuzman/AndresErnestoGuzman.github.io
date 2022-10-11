@@ -92,7 +92,9 @@ hr {
   padding: 0;
   top: 50%;
 }
-p { margin-left:2em; margin-right:2em; /* Or another measurement unit, like px */ }
+
+p { margin-left:1em; margin-right:1em; /* Or another measurement unit, like px */ }
+
 li{margin-left:3em;}
   table, th, td {
   border:1px solid black;
