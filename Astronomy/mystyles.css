@@ -113,10 +113,20 @@ table{margin-left: 15em}
   max-width:512px;
 }
 
+/* Three image containers (use 25% for four, and 50% for two, etc) */
+.column3 {
+  float: left;
+  width: 33%;
+  padding: 5px;
+  max-width:512px;
+}
+
+
 /* Clear floats after image containers */
 .row::after {
   content: "";
   clear: both;
   display: table;
 }
+
 
