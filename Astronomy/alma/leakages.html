@@ -27,10 +27,10 @@
       \)
       <h1>Signal leakage and interference in ALMA</h1>
       <h2>Introduction</h2>
-      <p>The ALMA receivers are affected in some antennas by radio frequency interference coming from several sources. The most common of these are the local oscillator (LO) of the waver vapor radiometer (WVR), the yttrium iron garnet (YIG), and the second local oscillator (LO2). In the following we will focus on the WVR LO leakage (or WVR leakage for short) as the treatment and underlying phenomenon seems to be similar to that of the other leakages. The general internal reference within ALMA for information about this problem is collected in the non-conformant report #120 (JIRA tiket <a href=https://jira.alma.cl/browse/NCR-120>NCR-120</a>).<p>
+      <p>The ALMA receivers are affected in some antennas by radio frequency interference coming from several sources. The most common of these are the local oscillator (LO) of the waver vapor radiometer (WVR), the yttrium iron garnet (YIG), and the second local oscillator (LO2). In the following we will focus on the WVR LO leakage (or WVR leakage for short) as the treatment and underlying phenomenon seems to be similar to that of the other leakages. The general internal reference within ALMA for information about this problem is collected in the non-conformant report #120 (JIRA ticket <a href=https://jira.alma.cl/browse/NCR-120>NCR-120</a>).<p>
 
       <h2> Phenomenology and detection </h2>
-      <p>The WVR leakage is detected most of the times in the bandpass spectrum, usually as a narrow line feature seen in absorption in the bandpass calibration table. Particularly strong interference is also be evident in emission the system temperature (Tsys) spectrum. Because  observations  with the main 12m array use a lower spectral resolution for Tsys measurements, the spectral signature of the leakage is wider in the Tsys spectrum than that observed in the bandpass. The Tsys leakage signal affects the calibration creating sometimes wide "wings" seen in the bandpass solution. All this features are evident in the example shown in Figure (1a) and (1b).  After calibration, almost none of these features are seen. Part of the reason is that the leakage seems to be more of less stable (or only slowly variable).</p>
+      <p>The WVR leakage is detected most of the times in the bandpass spectrum, usually as a narrow line feature seen in absorption in the bandpass calibration table. Particularly strong interference is also be evident in emission the system temperature (Tsys) spectrum. Because  observations  with the main 12m array use a lower spectral resolution for Tsys measurements, the spectral signature of the leakage is wider in the Tsys spectrum than that observed in the bandpass. The Tsys leakage signal affects the calibration creating sometimes wide "wings" seen in the bandpass solution. All this features are evident in the example shown in Figure (1a) and (1b).  After calibration, almost none of these features are seen. Part of the reason is that the leakage seems to be more of less stable (or only slowly variable).
 
       
       <div class="row">
@@ -53,33 +53,47 @@
           <figcaption>Figure (2b). Calibrated phase calibrator spectrum. Leakage effect appears negligible. </figcaption>
   </div>
     </div>
-
-    <h3>Leakages in the autocorrelations and cross-correlations</h3>
-    <p> One of the characteristics of the leakages is that they are more evident in the autocorrelations, where they appear as a positive peak, rather 
+</p>
+    <h3>Leakage signal in the auto-correlations and cross-correlations</h3>
+    <p> One of the characteristics of the leakages is that they are more evident in the auto-correlations, where they appear as a positive peak, rather 
     than in the cross-correlations, where they appear as absorption features. The latter is the reason why they appear as absorption features in the bandpass solutions.
     The reason for this is explained by R. Hills (report attached in NCR-120) 
     <blockquote>
-      "In the normalized cross-correlation (bottom left) there is a negative spike. This is as expected because the WRV LO frequencies are different (by design) and so do not correlate, but the presence of the spike is suppressing the correlated signal from the quasar since the normalization is done by dividing by the geometric mean of the autocorrelation functions."
+      "In the normalized cross-correlation (bottom left) there is a negative spike. This is as expected because the WRV LO frequencies are different (by design) and so do not correlate, but the presence of the spike is suppressing the correlated signal from the quasar since the normalization is done by dividing by the geometric mean of the auto-correlation functions."
     </blockquote>
 
-    This features can be observed in the following plots.
-    </p>
+    These features can be observed in the following plots.
+    
  <div class="row">
      <div class="column" style="width:33%;max-width:384px;" >
       <img src="Astronomy/alma/bp_acorr.png" alt="Tsys" style="width:100%">
-      <figcaption></figcaption>
+      <figcaption>Figure (3a). DA42 auto-correlation amplitude of a bandpass calibrator.</figcaption>
     </div>
     <div class="column"  style="width:33%;max-width:384px;">
       <img src="Astronomy/alma/bp_xcorr.png" alt="Bandpass" style="width:100%">
-          <figcaption></figcaption>
+          <figcaption>Figure (3b). DA42 cross-correlation amplitude.</figcaption>
   </div>
   <div class="column"  style="width:33%;max-width:384px;">
       <img src="Astronomy/alma/bp_xcorr_phase.png" alt="Bandpass" style="width:100%">
-          <figcaption></figcaption>
+          <figcaption>Figure (3b). DA42 cross-correlation phase.</figcaption>
   </div>
     </div>
  <div class="row">
+</p>
+    <h3>Leakage signals in the cubes</h3>
+    <p>The effect of the leakage in the image cubes is a bit more subtle  because of the following reasons.
+      <ul>
+        <li>As far as we have seen, the leakage affects the phase calibrator and the source scans. The effect on the cross-correlations is qualitatively similar on all fields, which means that the effect is partially canceled out by calibration, specifically, by the bandpass calibration. </li>
+        <li> During image deconvolution, we combine the cross-correlation signals from many antennas, affected in various degrees by the leakage problem :from heavily affected to not at all. 
+        </li>
+        <li> Because the extraneous leakage signal affects the cross-correlation only through the auto-correlation normalization, in the visibilities this is mainly a  <i>calibration</i> problem affecting some channels. This means that the cross-correlation amplitudes that are multiplied by wrong calibration factors. A consequence of this is that continuum subtracted cubes (such as the ones analyzed in the weblogs) should not display any spurious "line emission", but such a feature may be observable in the RMS spectrum or in non continuum-subtracted cubes. 
+            </li>
+      </ul>
+        <figure src="Astronomy/cube.png" alt="Continuum subtracted cube">
 
+
+
+      </p>
 
       <h2> Simple theoretical model</h2>
      
