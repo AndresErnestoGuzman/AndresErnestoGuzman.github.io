@@ -84,17 +84,14 @@ These features can be observed in the following plots.
         <li>As far as we have seen, the leakage affects the phase calibrator and the source scans. The effect on the cross-correlations is qualitatively similar on all fields, which means that the effect is partially canceled out by calibration, specifically, by the bandpass calibration. </li>
         <li> During image deconvolution, we combine the cross-correlation signals from many antennas, affected in various degrees by the leakage problem :from heavily affected to not at all. 
         </li>
-        <li> Because the extraneous leakage signal affects the cross-correlation only through the auto-correlation normalization, in the visibilities this is mainly a  <i>calibration</i> problem affecting some channels. This means that the cross-correlation amplitudes that are multiplied by wrong calibration factors. A consequence of this is that continuum subtracted cubes (such as the ones analyzed in the weblogs) should not display any spurious "line emission", but such a feature may be observable in the RMS spectrum or in non continuum-subtracted cubes. 
+        <li> Because the extraneous leakage signal affects the cross-correlation only through the auto-correlation normalization, in the visibilities this is mainly a  <i>calibration</i> problem affecting some channels. This means that the cross-correlation amplitudes that are multiplied by wrong calibration factors. A consequence of this is that continuum subtracted cubes (such as the ones analyzed in the weblogs) should not display any spurious "line emission," but such a feature may be observable in the RMS spectrum or in non continuum-subtracted cubes. 
             </li>
       </ul>
-        <figure> <img src="Astronomy/alma/cube.png" alt="Continuum subtracted cube" style="width: 50%;max-width: 512px;">
-          <figcaption>Continuum subtracted cube of science target as displayed in a weblog.</figcaption>
+        <figure style="width:50%;max-width:600px;"> 
+          <img src="Astronomy/alma/cube.png" alt="Continuum subtracted cube" style="width:100%;max-width:600px;">
+          <figcaption>Continuum subtracted cube of science target as displayed in a weblog. Effect of the leakage is seen in the scaled median absolute deviation (robust estimator of RMS) spectrum in black.</figcaption>
         </figure>
-
-
-
-
-      </p>
+  </p>
 
       <h2> Simple theoretical model</h2>
      
