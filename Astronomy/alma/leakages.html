@@ -95,23 +95,60 @@ These features can be observed in the following plots.
   <p>We evaluate the effect of the leakages on (non-continuum subtracted) image cubes  of the phase calibrators. We evaluated these for several sources observing the following:
     <ul>
       <li>The RMS measured in regions away from the source (see Figure 5) show an increase in the leakage region consistent with what is shown  by  Figure (4) in the source cube. </li>
-      <li></li>
+      <li>The integrated flux in a region around the source seem to follow the same behavior  as the RMS, increasing near the leakage frequency. However, this is not observed in the  spectra of the smaller region nor in the spectra taken at  the peak flux density of the source.  </li>
       </ul>
 
-      <figure style="width:50%;max-width:600px;"> 
-          <img src="Astronomy/alma/rms.png" alt="RMS spectrum of phasecal" style="width:100%;max-width:600px;">
-          <figcaption>Figure (5). RMS per-channel  of the phase calibrator. The CARTA display shows the region used to calculate the per-channel RMS and the resulting RMS spectra. </figcaption>
+      <figure style="width:75%;max-width:896px;"> 
+          <img src="Astronomy/alma/rms.png" alt="RMS spectrum of phasecal" style="width:100%;max-width:896px;">
+          <figcaption>Figure (5). RMS per-channel  of the phase calibrator. The display shows the region used to calculate the per-channel RMS and the resulting RMS spectra. </figcaption>
         </figure>
-      <figure style="width:50%;max-width:600px;"> 
-          <img src="Astronomy/alma/sum.png" alt="Integrated emission of phasecal" style="width:100%;max-width:600px;">
-          <figcaption>Figure (6). Spectra of  phase calibrator. The CARTA display shows the regions used to calculate the sum of the emission for both spectra shown on the right panel. </figcaption>
+      <figure style="width:75%;max-width:896px;"> 
+          <img src="Astronomy/alma/sum.png" alt="Integrated emission of phasecal" style="width:100%;max-width:896px;">
+          <figcaption>Figure (6). Spectra of  phase calibrator. The  display shows the regions used to calculate the sum of the emission for both spectra in  the right panel. </figcaption>
         </figure>
       </p>
 
 
       <h2> Simple theoretical model</h2>
-     
-
+     <p>A simple theoretical picture of the leakage will be presented. Consider the radio signal received from a quasar (the bandpass calibrator) coming from a point source whose electric (or magnetic) field complex amplitude can be represented by:
+      \begin{equation}
+      E(t) = a e^{i(2\pi  \nu t -\varphi)}~~,\label{eq-1}
+      \end{equation}
+      where the frequency \(\nu\) is a random variable with probability density function \(f_\nu\propto S_\nu\). This function will not be used in the following, but, if necessary, we may assume (as it is observed) it is a negative power law of frequency over the frequency range of interest. Because emission from the quasar comes from many electrons emitting synchrotron incoherently, we add a random phase \(\varphi\) distributed uniformly in \([0,2\pi)\) and independent from \(\nu\). \(a^2=\int_{-\infty}^\infty S_\nu d\nu\) is the total 
+      integrated spectrum. 
+     </p>
+    <p>The autocorrelation of \(E(t)\) is (Papoulis, §10):
+      \begin{equation}
+      R(\tau) = a^2\,\mathbb{E}(e^{2\pi i \nu \tau})=a^2\,\int_{-\infty}^\infty f_\nu(\nu)e^{2\pi i \nu \tau}d\nu~~.\label{eq-2}
+      \end{equation}
+      We assume that the leakage injects a monochromatic signal on each antenna of the form
+      \begin{equation}
+       L_j e^{2\pi i \bar{\nu}_j t~~},\label{eq-3}
+      \end{equation}
+      for each antenna \(j=1,2\), with constant \(\bar{\nu}_i\). In general, as mentioned above, \(\bar{\nu_1}\neq\bar{\nu_2}\).
+      <figure style="width:50%;max-width:512px;"> 
+          <img src="Astronomy/alma/diagram_leaks.png" alt="Leakage diagram" style="width:100%;max-width:512px;">
+          <figcaption>Figure (7). Diagram of leakage process contaminating astronomical signal for two antennas. </figcaption>
+        </figure>
+      </p>
+    <p>Based on Equation (\ref{eq-1}), the signals received at antenna \(j=1,2\) is :
+      \begin{equation}
+      V_j(t) = a e^{i(2\pi  \nu t -\varphi)}+L_j e^{2\pi i \bar{\nu}_jt}~~.\label{eq-4}
+\end{equation}
+    The auto-correlation of \(V_j\) is:
+    \begin{equation}
+    R_j(\tau) = \mathbb{E}\left(V_j(t+\tau)V_j^*(t)\right) = a^2 \,\mathbb{E}\left(e^{2\pi i \nu \tau}\right) + L_j^2 
+    \,e^{2\pi i \bar{\nu_j} \tau}~~, \label{eq-autocorr}
+    \end{equation} 
+    because \(\mathbb{E}\left(e^{i(2\pi  \nu t-\varphi)}e^{2\pi i \bar{\nu}_j}\right)=\mathbb{E}\left(\mathbb{E_\varphi}\left(e^{i(2\pi  \nu t-\varphi)}e^{2\pi i \bar{\nu}_j}|\nu\right)\right)=0\). This implies that the 
+  </p>
+<p>
+      The cross-correlation between the signals from antennae 1 and 2 is 
+      \begin{equation}
+      C_{12}(\tau)=\mathbb{E}\left(V_1(t+\tau)V_2^*(t)\right)~~.\label{eq-5}
+      \end{equation} 
+      To calculate this cross-correlation, we need 
+    </p>
 
     <div class="footer">
     </div>
