@@ -110,6 +110,7 @@ These features can be observed in the following plots.
 
 
       <h2> Simple theoretical model</h2>
+
      <p>A simple theoretical picture of the leakage will be presented. Consider the radio signal received from a quasar (the bandpass calibrator) coming from a point source whose electric (or magnetic) field complex amplitude can be represented by:
       \begin{equation}
       E(t) = a e^{i(2\pi  \nu t -\varphi)}~~,\label{eq-1}
@@ -123,9 +124,10 @@ These features can be observed in the following plots.
       \end{equation}
       We assume that the leakage injects a monochromatic signal on each antenna of the form
       \[
-       L_j e^{2\pi i \bar{\nu}_j t}~~,
+       L_j e^{i(2\pi \bar{\nu}_j t - \alpha_j)}~~,
       \]
-      for each antenna \(j=1,2\), with constant \(\bar{\nu}_i\) and constant phase=0 . In general, as mentioned above, \(\bar{\nu_1}\neq\bar{\nu_2}\).
+      for each antenna \(j=1,2\), with constant \(\bar{\nu}_i\) and a random phase \(\alpha_j\).
+      In general, as mentioned above, \(\bar{\nu_1}\neq\bar{\nu_2}\).
       <figure style="width:50%;max-width:512px;"> 
           <img src="Astronomy/alma/diagram_leaks.png" alt="Leakage diagram" style="width:100%;max-width:512px;">
           <figcaption>Figure (7). Diagram of leakage process contaminating astronomical signal for two antennas. </figcaption>
@@ -134,26 +136,47 @@ These features can be observed in the following plots.
     <p>
       Based on Equation (\ref{eq-1}), the signals received at antenna \(j=1,2\) is :
       \begin{equation}
-      E_j(t) = a e^{i(2\pi  \nu t -\varphi)}+L_j e^{2\pi i \bar{\nu}_jt}~~.\label{eq-3}
+      E_j(t) = a e^{i(2\pi  \nu t -\varphi)}+L_j e^{i(2\pi \bar{\nu}_jt)}~~.\label{eq-3}
 \end{equation}
-    The auto-correlation of \(E_j\) is:
+Note that \(E_j(t)\) is no longer an stationary process, but cyclostationary with a deterministic component, i.e., the constant phase leakage signal. We will remove the explicit dependence on \(t\) by averaging in time after the correlator, as indicated in the diagram in Figure (7). 
+</p>
+  <p>
+    The  auto-correlation of \(E_j\) is:
     \begin{equation}
-    R_j(\tau) = \mathbb{E}\left(E_j(t+\tau)E_j^*(t)\right) = a^2 \,\mathbb{E}\left(e^{2\pi i \nu \tau}\right) + L_j^2 
+    R_{jj}(\tau) = \langle\mathbb{E}\left(E_j(t+\tau)E_j^*(t)\right)\rangle_t = \lim_{T\rightarrow \infty}\frac{1}{2T}\int_{-T}^{T} \mathbb{E}\left(E_j(t+\tau)E_j^*(t)\right)dt = a^2 \,\mathbb{E}\left(e^{2\pi i \nu \tau}\right) + L_j^2 
     \,e^{2\pi i \bar{\nu_j} \tau}~~, \label{eq-autocorr}
     \end{equation} 
-    because \(\mathbb{E}\left(e^{i(2\pi  \nu t-\varphi)}e^{2\pi i \bar{\nu}_j}\right)=\mathbb{E}\left(\mathbb{E_\varphi}\left(e^{i(2\pi  \nu t-\varphi)}e^{2\pi i \bar{\nu}_j}|\nu\right)\right)=0\), that is, the cross terms between the leakage signal and the astronomical signal do not correlate. This zero correlation comes explicitly in our toy model from the fact that the leakage signal is monochromatic and coherent and has constant phase, in contrast with the random phase of the astronomical signal. Even if the leakage signal is incoherent, it would be characterized by a phase independent of the astronomical signal, not changing the fact that the cross terms in the correlations would be zero. The autocorrelation spectrum from \eqref{eq-autocorr} is 
+    because \(\mathbb{E}\left(e^{i(2\pi  \nu t-\varphi)}e^{-2\pi i \bar{\nu}_j}\right)=\mathbb{E}\left(\mathbb{E_\varphi}\left(e^{i(2\pi  \nu t-\varphi)}e^{-2\pi i \bar{\nu}_j}|\nu\right)\right)=0\), that is, the cross terms between the leakage signal and the astronomical signal do not correlate. 
+    This lack of  correlation (even at \(\nu=\bar{\nu}_j\)) comes explicitly in our model from the fact that the leakage signal has constant phase, in contrast with the random phase of the astronomical signal. 
+    Even if the leakage signal has a random non-zero phase, it would be characterized by a phase independent of the astronomical signal, not changing the fact that the cross terms in the correlations would be zero. 
+    The autocorrelation spectrum (the Fourier transform of the autocorrelation) from \eqref{eq-autocorr} is 
     \begin{equation}
-    V_{jj}(\nu) = a^2 f_\nu + L_j^2 \delta(\nu-\bar{\nu}_j)~~.\label{eq-5}
+    S_{jj}(\nu) = a^2 f_\nu + L_j^2 \delta(\nu-\bar{\nu}_j)~~.\label{eq-5}
     \end{equation}
   </p>
 
 <p>
-      To c cross-correlation between the signals from antennae 1 and 2 is 
+      To cross-correlation between the signals from antennae 1 and 2 is 
+     \[
+      R_{12}(\tau)=\mathbb{E}\left(V_1(t+\tau)V_2^*(t)\right)~~.
+    \]
+      Note that the term \(\left(L_1e^{i(2\pi \bar{\nu}_1(t+\tau))}L_2e^{-i(2\pi \bar{\nu}_2t)}\right)\) is removed by 
+      the time averaging assuming that the time interval over which the signal is integrated is large compared with \(|\bar{\nu_1}-\bar{\nu_2}|^{-1}\).
+      <!-- \begin{equation}
+      \mathbb{E}\left(L_1e^{i(2\pi \bar{\nu}_1(t+\tau)-\alpha_1)}L_2e^{-i(2\pi \bar{\nu}_2t-\alpha_2)}\right) = 0
+      \end{equation} -->
+      Therefore:
       \begin{equation}
-      R_{12}(\tau)=\mathbb{E}\left(V_1(t+\tau)V_2^*(t)\right)~~.\label{eq-6}
-      \end{equation} 
-      To calculate this cross-correlation, we need 
+      \begin{split}
+      &                & R_{12}(\tau) &= a^2 \,\mathbb{E}\left(e^{2\pi i \nu \tau}\right)\\
+      &\longrightarrow & S_{12}(\nu)      &= a^2\,f_\nu \\
+      \end{split}\label{eq-6}
+      \end{equation}
+      The normalized cross-correlation spectra
     </p>
+    <p>Finally, the </p>
+    <h3>Effect on bandpass solutions.</h3>
+    <p> It is apparent that the bandpass solutions are able to </p>
 
     <div class="footer">
     </div>
