@@ -92,7 +92,7 @@ These features can be observed in the following plots.
   <p>We evaluate the effect of the leakages on (non-continuum subtracted) image cubes  of the phase calibrators. We evaluated these for several sources observing the following:
     <ul>
       <li>The RMS measured in regions away from the source (see Figure 5) show an increase in the leakage region consistent with what is shown  by  Figure (4) in the source cube. </li>
-      <li>The integrated flux in a region around the source seem to follow the same behavior  as the RMS, increasing near the leakage frequency. However, this is not observed in the  spectra of the smaller region nor in the spectra taken at  the peak flux density of the source.  </li>
+      <li>The integrated flux in a region around the source seem to follow the same behavior  as the RMS, increasing near the leakage frequency. However, <em>this is not observed in the  spectra of the smaller region nor in the spectra taken at  the peak flux density of the source.</em>  </li>
       </ul>
 
       <figure style="width:75%;max-width:896px;"> 
@@ -190,26 +190,19 @@ Note that \(E_j(t)\) is no longer an stationary process, but cyclostationary wit
 where \(\mathcal{A}_1\) and \(\mathcal{A}_2\) are the auto-correlations associated with antennas 1 and 2. 
 </p>
 
-<p> Bandpass calibrations, then, would compensate the factors in the denominators in Equation \eqref{eq-vis2}. Fortunately, the raw auto-correlations are apparently somewhat stable through the executions. Figure (8) shows a montage of the XX auto-correlation for the bandpass and phase calibrator in an execution block: differences between the two fields are minor.
+<p> Bandpass calibrations, then, would compensate the factors in the denominators in Equation \eqref{eq-vis2}. Fortunately, the raw auto-correlations are apparently somewhat stable through the executions. Figure (8) shows a montage of the XX auto-correlation for the bandpass and phase calibrator in an execution block: differences between the two fields are minor. The practical consequence of this is that the  <em>bandpass corrections for the leakages are adequate to a first approximation for the phase calibrator and presumably the science fields as well.</em> 
+  The bandpass correction compensates the effect of the leakage and there is no important 
+  calibration problem in the image tests we examined, as shown by the lack of leakage effect on the total flux (peak) spectrum in the phase calibrator cubes.
 <figure style="width:90%;max-width:1024px;"> 
           <img src="Astronomy/alma/montage.png" alt="Auto-correlations montage" style="width:90%;max-width:1024px;">
           <figcaption>Figure (8). Raw XX auto-correlations from the bandpass and phase calibrator scans. 99.6 GHz WVR LO leakage is evident. The differences between the two fields are minor.  </figcaption>
         </figure>
 </p>
 
-    <p>  However, these solutions are adapted to its flux density, and they are not adequate for the rest of the sources. Let us assume that the bandpass calibrator has flux density \(a^2f_\nu\) and another source of interest (the phase calibrator for example) has flux density \(\tilde{a}^2\tilde{f_\nu}\). Then, the bandpass solutions for antenna \(j\) would be:
-    \begin{equation}
-    b_\nu = \frac{1}{a^2f_\nu+L_j^2\phi(\nu-\bar{\nu})}~~.\label{eq-bp}
-  \end{equation}
-  Then (ignoring all the rest of the calibrations), the normalized and bandpass calibrated visibilities for the source of interest at the frequency \(\bar{\nu}\) would be:
-  \begin{equation}
-  \mathcal{\tilde{V}}_{12}(\nu)=\tilde{a}^2f_\bar{\nu}\sqrt{\frac{a^2 f_\bar{\nu} + L_1^2}{\tilde{a}^2 \tilde{f}_\bar{\nu} + L_1^2}}
-  \sqrt{ \frac{a^2 f_\bar{\nu} + L_1^2}{\tilde{a}^2 \tilde{f}_\bar{\nu} + L_2^2}}~~.\label{eq-q}
-  \end{equation}
-  Because in general the bandpass calibrator is the strongest source and \(a^2f_\nu>\tilde{a}^2\tilde{f}_\nu\), the terms in the roots are 
-  greater than 1 and the calibrated flux is larger than it should be in the channels affected by the leakage.
+<p>Nevertheless, the auto-correlations are not completely stable and there are a few differences. These differences may increase the auto-correlation signal in the phasecal scan respect to the bandpass scans, or vice-versa. The final effect is a slight miscalibration in the leakage channels and affected  antennas and their associated baselines, which translates to an increase in image RMS in those channels. That is, the increase in RMS observed <em>is not due to an overestimation of the visibility signal in some antennae due to miscalibration</em>, but rather an increase of RMS due to miscalibration (under- or over-estimation) producing poorer image fidelity and lower dynamic range. 
 </p>
 
+    
     <div class="footer">
     </div>
   </body>
