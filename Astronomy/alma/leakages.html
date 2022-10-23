@@ -19,11 +19,8 @@
     
     <div class="content">
       \(
-        \newcommand{\effbw}[1]{\Delta {#1}_{\rm eff}}
         \newcommand{\var}{{\rm var}}
-        \newcommand{\cov}{{\rm cov}}
-        \newcommand{\df}{{\delta\!f}}
-        \newcommand{\dnu}{{\delta\!\nu}}\newcommand{\Dnu}{{\Delta\!\nu}}
+        \newcommand{\cov}{{\rm cov}}        
       \)
       <h1>Signal leakage and interference in ALMA</h1>
       <h2>Introduction</h2>
@@ -151,8 +148,9 @@ Note that \(E_j(t)\) is no longer an stationary process, but cyclostationary wit
     Even if the leakage signal has a random non-zero phase, it would be characterized by a phase independent of the astronomical signal, not changing the fact that the cross terms in the correlations would be zero. 
     The autocorrelation spectrum (the Fourier transform of the autocorrelation) from \eqref{eq-autocorr} is 
     \begin{equation}
-    S_{jj}(\nu) = a^2 f_\nu + L_j^2 \delta(\nu-\bar{\nu}_j)~~.\label{eq-5}
+    S_{jj}(\nu) = a^2 f_\nu + L_j^2 \phi(\nu-\bar{\nu}_j)~~,\label{eq-5}
     \end{equation}
+    where \(\phi\) represents  an unresolved  line feature  normalized to one at peak, i.e., \(\phi(0)=1\).
   </p>
 
 <p>
@@ -172,11 +170,45 @@ Note that \(E_j(t)\) is no longer an stationary process, but cyclostationary wit
       &\longrightarrow & S_{12}(\nu)      &= a^2\,f_\nu \\
       \end{split}\label{eq-6}
       \end{equation}
-      The normalized cross-correlation spectra
+      </p><p>Finally, we consider the  normalized cross-correlation spectra between the two antennas, which is given by
+      \begin{equation*}
+      \mathcal{V}_{12}(\nu) = \frac{a^2f_\nu}{\sqrt{a^2 f_\nu + L_1^2 \phi(\nu-\bar{\nu}_1)}\sqrt{a^2 f_\nu + L_2^2 \phi(\nu-\bar{\nu}_2})}~~.
+      \end{equation*}
+      If we consider \(\bar{\nu_1}\approx\bar{\nu_2}\approx\bar{\nu}\) within the spectral resolution, the cross-correlation normalized spectrum will show an "absorption" dip with a depth 
+      \begin{equation}
+      \mathcal{V}_{12}(\bar{\nu}) = \frac{a^2f_\bar{\nu}}{\sqrt{a^2 f_\bar{\nu} + L_1^2}\sqrt{a^2 f_\bar{\nu} + L_2^2 }}~~.\label{eq-vis}
+      \end{equation}
     </p>
-    <p>Finally, the </p>
-    <h3>Effect on bandpass solutions.</h3>
-    <p> It is apparent that the bandpass solutions are able to </p>
+    
+    <h3>The observed auto-correlations in ALMA</h3>
+    <p>The highly idealized Equation \eqref{eq-vis} is not really applicable to ALMA data because the auto-correlations are heavily influenced
+    by atmospheric and instrumental signal, with only a minor component arising from the astronomical source. A more applicable form 
+    of the normalized visibility would be
+  \begin{equation}
+  \mathcal{V}_{12}(\bar{\nu}) = \frac{a^2f_\bar{\nu}}{\sqrt{\mathcal{A}_{1,\bar{\nu}}  + L_1^2}\sqrt{\mathcal{A}_{2,\bar{\nu}} + L_2^2 }}~~,\label{eq-vis2}
+\end{equation}
+where \(\mathcal{A}_1\) and \(\mathcal{A}_2\) are the auto-correlations associated with antennas 1 and 2. 
+</p>
+
+<p> Bandpass calibrations, then, would compensate the factors in the denominators in Equation \eqref{eq-vis2}. Fortunately, the raw auto-correlations are apparently somewhat stable through the executions. Figure (8) shows a montage of the XX auto-correlation for the bandpass and phase calibrator in an execution block: differences between the two fields are minor.
+<figure style="width:90%;max-width:1024px;"> 
+          <img src="Astronomy/alma/montage.png" alt="Auto-correlations montage" style="width:90%;max-width:1024px;">
+          <figcaption>Figure (8). Raw XX auto-correlations from the bandpass and phase calibrator scans. 99.6 GHz WVR LO leakage is evident. The differences between the two fields are minor.  </figcaption>
+        </figure>
+</p>
+
+    <p>  However, these solutions are adapted to its flux density, and they are not adequate for the rest of the sources. Let us assume that the bandpass calibrator has flux density \(a^2f_\nu\) and another source of interest (the phase calibrator for example) has flux density \(\tilde{a}^2\tilde{f_\nu}\). Then, the bandpass solutions for antenna \(j\) would be:
+    \begin{equation}
+    b_\nu = \frac{1}{a^2f_\nu+L_j^2\phi(\nu-\bar{\nu})}~~.\label{eq-bp}
+  \end{equation}
+  Then (ignoring all the rest of the calibrations), the normalized and bandpass calibrated visibilities for the source of interest at the frequency \(\bar{\nu}\) would be:
+  \begin{equation}
+  \mathcal{\tilde{V}}_{12}(\nu)=\tilde{a}^2f_\bar{\nu}\sqrt{\frac{a^2 f_\bar{\nu} + L_1^2}{\tilde{a}^2 \tilde{f}_\bar{\nu} + L_1^2}}
+  \sqrt{ \frac{a^2 f_\bar{\nu} + L_1^2}{\tilde{a}^2 \tilde{f}_\bar{\nu} + L_2^2}}~~.\label{eq-q}
+  \end{equation}
+  Because in general the bandpass calibrator is the strongest source and \(a^2f_\nu>\tilde{a}^2\tilde{f}_\nu\), the terms in the roots are 
+  greater than 1 and the calibrated flux is larger than it should be in the channels affected by the leakage.
+</p>
 
     <div class="footer">
     </div>
