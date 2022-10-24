@@ -200,6 +200,12 @@ where \(\mathcal{A}_1\) and \(\mathcal{A}_2\) are the auto-correlations associat
 </p>
 
 <p>Nevertheless, the auto-correlations are not completely stable and there are a few differences. These differences may increase the auto-correlation signal in the phasecal scan respect to the bandpass scans, or vice-versa. The final effect is a slight miscalibration in the leakage channels and affected  antennas and their associated baselines, which translates to an increase in image RMS in those channels. That is, the increase in RMS observed <em>is not due to an overestimation of the visibility signal in some antennae due to miscalibration</em>, but rather an increase of RMS due to miscalibration (under- or over-estimation) producing poorer image fidelity and lower dynamic range. 
+We can further test this hypothesis  by examining the results of interpolating the leakage affected channels in the bandpass table. The effect is that the bandpass amplitude is much larger in the affected channels than the original bandpass. This creates a dip or decrease in the flux amplitude calibration as shown in Figure (9) (that is, bandpass solution is over-estimated), but at the same time, an _increase_ in the RMS. The poorer image fidelity even compensates the decrease in flux density scaling in the leakage channels.
+<figure style="width:90%;max-width:1536px;"> 
+          <img src="Astronomy/alma/interp.png" alt="Image phasecal interpolated bandpass" style="width:90%;max-width:1536px;">
+          <figcaption>Figure (9). Spectra of  phase calibrator. The  three displays show the image, the peak spectrum, and the RMS spectrum, respectively.  </figcaption>
+        </figure>
+
 </p>
 
     
