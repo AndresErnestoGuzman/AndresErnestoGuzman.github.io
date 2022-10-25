@@ -121,9 +121,9 @@ These features can be observed in the following plots.
       \end{equation}
       We assume that the leakage injects a monochromatic signal on each antenna of the form
       \[
-       L_j e^{i(2\pi \bar{\nu}_j t - \alpha_j)}~~,
+       L_j e^{2\pi i \bar{\nu}_j t }~~,
       \]
-      for each antenna \(j=1,2\), with constant \(\bar{\nu}_i\) and a random phase \(\alpha_j\).
+      for each antenna \(j=1,2\), with constant \(\bar{\nu}_i\).
       In general, as mentioned above, \(\bar{\nu_1}\neq\bar{\nu_2}\).
       <figure style="width:50%;max-width:512px;"> 
           <img src="Astronomy/alma/diagram_leaks.png" alt="Leakage diagram" style="width:100%;max-width:512px;">
@@ -133,9 +133,10 @@ These features can be observed in the following plots.
     <p>
       Based on Equation (\ref{eq-1}), the signals received at antenna \(j=1,2\) is :
       \begin{equation}
-      E_j(t) = a e^{i(2\pi  \nu t -\varphi)}+L_j e^{i(2\pi \bar{\nu}_jt)}~~.\label{eq-3}
+      E_j(t) = a e^{i(2\pi  \nu t -\varphi)}+L_j e^{2\pi i \bar{\nu}_jt}~~.\label{eq-3}
 \end{equation}
-Note that \(E_j(t)\) is no longer an stationary process, but cyclostationary with a deterministic component, i.e., the constant phase leakage signal. We will remove the explicit dependence on \(t\) by averaging in time after the correlator, as indicated in the diagram in Figure (7). 
+ Note that \(E_j(t)\) is no longer an stationary process, but cyclostationary with a deterministic component, i.e., the constant phase leakage signal. 
+ The explicit dependence on \(t\) will be removed by averaging in time after the correlator, as indicated in the diagram in Figure (7). 
 </p>
   <p>
     The  auto-correlation of \(E_j\) is:
@@ -156,9 +157,9 @@ Note that \(E_j(t)\) is no longer an stationary process, but cyclostationary wit
 <p>
       To cross-correlation between the signals from antennae 1 and 2 is 
      \[
-      R_{12}(\tau)=\mathbb{E}\left(V_1(t+\tau)V_2^*(t)\right)~~.
+      R_{12}(\tau)=\langle\mathbb{E}\left(E_1(t+\tau)E_2^*(t)\right)\rangle_t~~.
     \]
-      Note that the term \(\left(L_1e^{i(2\pi \bar{\nu}_1(t+\tau))}L_2e^{-i(2\pi \bar{\nu}_2t)}\right)\) is removed by 
+      Note that the term \(L_1e^{i(2\pi \bar{\nu}_1(t+\tau))}L_2e^{-i(2\pi \bar{\nu}_2t)}\) is removed by 
       the time averaging assuming that the time interval over which the signal is integrated is large compared with \(|\bar{\nu_1}-\bar{\nu_2}|^{-1}\).
       <!-- \begin{equation}
       \mathbb{E}\left(L_1e^{i(2\pi \bar{\nu}_1(t+\tau)-\alpha_1)}L_2e^{-i(2\pi \bar{\nu}_2t-\alpha_2)}\right) = 0
@@ -170,7 +171,9 @@ Note that \(E_j(t)\) is no longer an stationary process, but cyclostationary wit
       &\longrightarrow & S_{12}(\nu)      &= a^2\,f_\nu \\
       \end{split}\label{eq-6}
       \end{equation}
-      </p><p>Finally, we consider the  normalized cross-correlation spectra between the two antennas, which is given by
+      </p>
+      <p>
+        The  <em>normalized cross-correlation spectrum</em> between the two antennas is given by
       \begin{equation*}
       \mathcal{V}_{12}(\nu) = \frac{a^2f_\nu}{\sqrt{a^2 f_\nu + L_1^2 \phi(\nu-\bar{\nu}_1)}\sqrt{a^2 f_\nu + L_2^2 \phi(\nu-\bar{\nu}_2})}~~.
       \end{equation*}
