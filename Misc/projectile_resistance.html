@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Projectile with air resistance. Maximum range angle.</title>
+    <base href="https://AndresErnestoGuzman.github.io/">
+    <!--base href="/Users/andres/public_html/"-->
+
+<!-- SCRIPTS START -->
+<script type="text/javascript" src="mathjax-local.js"> </script> 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<!-- SCRIPTS END -->
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- STYLE STARTT -->   
+    <link rel="stylesheet" type="text/css" href="Astronomy/mystyles.css">
+
+<!-- STYLE END -->
+</head>
+  <body>
+   
+    <div class="topnav">
+      <a href="index.html">Home </a>
+      <a href="misc.html">Back </a>
+    </div>
+    
+    <div class="content"> 
+<h1> Projectile with air resistance. Maximum range angle.</h1>
+
+      <p>The equations of motion with initial conditions are:
+        \begin{align*}
+        \ddot{y} &= -g-\gamma \dot{y}\\
+        \ddot{x} &= -\gamma \dot{x}\\
+        \dot{y}(0) &= V \sin(\alpha)\\
+        \dot{x}(0) &= V \cos(\alpha)\\
+        y(0)&=x(0)=0~~.
+        \end{align*}
+      We define \begin{equation}\eta=\frac{g}{V\gamma}~~.\end{equation} Rescaling \(t\to (\gamma t)\), \(x\to x\gamma/V\), and \(y\to y\gamma/V\), we are left with
+      unitless equations:
+      \begin{align}
+      \begin{split}
+        \ddot{y} &= -\eta-\dot{y}\\
+        \ddot{x} &= - \dot{x}\\
+        \dot{y}(0) &=  \sin(\alpha)\\
+        \dot{x}(0) &=  \cos(\alpha)\\
+        y(0)&=x(0)=0~~.
+        \end{split}\end{align}
+        The solution is given by (<a href="https://phys.libretexts.org/Bookshelves/Classical_Mechanics/Classical_Mechanics_(Tatum)/07%3A_Projectiles/7.02%3A_Air_Resistance_Proportional_to_the_Speed">see here</a>)
+        \begin{align}
+        y(t) &= \left(1-e^{-t}\right) (\sin (\alpha )+\eta )-\eta  t\\
+        x(t) &= \left(1-e^{-t}\right) \cos (\alpha )~~.
+        \end{align}
+        These effectively give the \((x,y)\) parametric trajectories of the projectiles respect to time.
+      </p>
+
+
+<p>
+  Determining which is the angle  which gives the maximum  range of the projectile is a bit  algebraically involved (in a similar way as <a href=http://www.fmat.cl/index.php?showtopic=95381>this problem</a> for example). To tackle this problem, we will calculate the <b>envelope of the trajectories</b> while varying \(\alpha\), the throwing angle. In projectile problems, this is sometimes called the "envelope of safety."
+<figure>
+  <img src="Misc/envelope.png" width="450">
+  <figcaption>
+    <small>
+      Figure 1: Many trajectories and their envelope in pink for \(\eta=0.03\). The intersection of the envelope with the \(x\) axis is the maximum range.
+    </small>
+  </figcaption>
+</figure>
+</p>
+     
+<p>If the position of the projectile is given by \(\vec{r}(t,\alpha)=(x(t,\alpha),y(t,\alpha))\) the envelope is given by the condition \[ \dot{\vec{r}} \parallel \partial_\alpha\vec{r}\] which translates to
+  \begin{equation}
+  e^{-2 t} \left(e^t-1\right) \left(\eta  \left(e^t-1\right) \sin (\alpha )-1\right)=0~~,
+  \end{equation}
+which clearly implies \begin{equation}t(\alpha)=\log \left(\frac{\csc (\alpha )}{\eta }+1\right)~~.\end{equation}
+The envelope is given parametrically by
+\begin{equation}
+  \vec{r}\left(t(\alpha),\alpha\right)=\left(\frac{\cot (\alpha )}{\csc (\alpha )+\eta },\frac{1+\eta\csc(\alpha) }{\eta +\csc(\alpha)}-\eta  \log
+   \left(\frac{\csc (\alpha )+\eta }{\eta }\right)\right)~~.
+\end{equation}
+and we need to find the conditions associated with \[y=0\Longleftrightarrow \frac{1+\eta\csc(\alpha) }{\eta +\csc(\alpha)} = \eta  \log
+   \left(\frac{\csc (\alpha )+\eta }{\eta }\right)\].
+</p>
+<p>To advance further we will define \(\epsilon=\eta+\csc(\alpha)\). Then, the equation above is re-written as:
+  \begin{equation}
+  \begin{split}
+  \eta \log\left(\frac{\epsilon}{\eta}\right) &= \frac{\eta}{\epsilon}(\epsilon-\eta)+\frac{1}{\epsilon}\\
+ \log\left(\frac{\epsilon}{e\eta}\right) &= \frac{1-\eta^2}{\eta\epsilon}  \\
+\to \frac{\epsilon}{e\eta} &= e^{\frac{1-\eta^2}{\eta\epsilon}}\\
+\frac{\epsilon\eta}{(1-\eta^2)}\frac{(1-\eta^2)}{e\eta^2} &= e^{\frac{1-\eta^2}{\eta\epsilon}}\\
+\frac{(1-\eta^2)}{e\eta^2} &= \frac{(1-\eta^2)}{\eta\epsilon} e^{\frac{1-\eta^2}{\eta\epsilon}}\\
+\to \frac{(1-\eta^2)}{\eta\epsilon} &= W\left(\frac{(1-\eta^2)}{e\eta^2}\right)\\
+\epsilon = \csc(\alpha)+\eta &= \frac{(1-\eta^2)}{\eta W\left(\frac{(1-\eta^2)}{e\eta^2}\right)}\\
+\longrightarrow \quad \boxed{\csc(\alpha) = \frac{(1-\eta^2)}{\eta W\left(\frac{(1-\eta^2)}{e\eta^2}\right)} -\eta}
+\end{split}~~,
+\end{equation}
+where \(W\) is the <a href=https://en.wikipedia.org/wiki/Lambert_W_function>Lambert function</a>. 
+This is a well studied function, although not an elementary one. Note that since \(\eta = \frac{g}{V\gamma}\), we have that the no-resistance limit of the equation is obtained  by taking \(\eta\to+\infty\). The argument of the Lambert function goes to \(-e^{-1}\), where the Lambert function has a singular point but is continuous and its value is -1. Asymptotic expansions of \(W\) around this point are derived in <a href=https://arxiv.org/abs/1209.0735>arXiv1209.0735</a> and are given in this case by
+\begin{equation}\csc(\alpha) = \sqrt{2}+ \frac{1}{3 \eta }+O(\eta^{-2})\approx \sqrt{2}+\frac{V\gamma}{3g}~~.\end{equation}
+We see that we recover the no resistance well-known result (\(\csc(45^\circ)=\sqrt{2}\)). In general, the angle of maximum range in the presence of air damping linear in velocity is smaller than 45\(^\circ\). The limit of no air resistance is attained in the low velocity regimes as well.  
+</p>
+
+
+
+
+<p><h2>REFERENCES</h2>
+<ul>
+  <li><a href="https://phys.libretexts.org/Bookshelves/Classical_Mechanics/Classical_Mechanics_(Tatum)/07%3A_Projectiles/7.02%3A_Air_Resistance_Proportional_to_the_Speed"> Air Resistance Proportional to the Speed by Jeremy Tatum</a></li>
+  <li><a href=https://arxiv.org/abs/1209.0735>"Lambert W Function for Applications in Physics" by Darko Veberic. </a></li>
+  <li><a  href=https://en.wikipedia.org/wiki/Lambert_W_function>"Lambert W function" by Wikipedia.</a></li>
+  <li><a href=http://www.fmat.cl/index.php?showtopic=95381>¿Cómo tirar el anzuelo más lejos? by <i>Guz</i></a></li>
+</ul>
+
+  <p>
+</div>
+<div class="footer"> <p><hr/></p> </div>   
+      </body>
+</html>
+
