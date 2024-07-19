@@ -1,0 +1,295 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+            <script src="resources/js/pipeline_common.min.js"></script>
+            <link rel="stylesheet" href="resources/css/all.min.css" type="text/css"/>
+
+    
+
+<title>
+2023.1.01143.L -
+Home</title>
+</head>
+<body>
+
+
+
+<nav class="navbar navbar-default navbar-fixed-top hidden-print">
+    <div class="container-fluid">
+	    <div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+	    	<a class="navbar-brand" href="#">
+	    		<img alt="ALMA" 
+	    		     src="resources/img/almalogo.png"/>
+	    	</a>
+	    </div>
+        <div class="collapse navbar-collapse" id="navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-left">
+                <li class="active">
+                	<a href="t1-1.html"><span class="glyphicon glyphicon-home"></span> Home</a>
+                </li>
+                <li class="">
+                	<a href="t1-3.html">By Topic</a>
+                </li>
+                <li class="">
+                	<a href="t1-4.html">By Task</a>
+                </li>
+            </ul>
+			<p class="navbar-text navbar-right navbar-projectcode">2023.1.01143.L</p>
+        </div>
+    </div>
+</nav>
+
+
+<div id="app-container" class="container-fluid">
+	
+
+
+<script>
+$(document).ready(function() {
+    pipeline.pages.t1_1.ready();
+});
+</script>
+
+
+
+
+<div class="row">
+    <div class="col-md-6">
+        <h2>Observation Overview</h2>
+        <table class="table table-condensed" summary="Data Details">
+            <thead>
+                <tr>
+                    <th class="col-md-5"></th>
+                    <th class="col-md-7"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>Project</th>
+                    <td>uid://A001/X35fc/Xca2</td>
+                </tr>
+                <tr>
+                    <th>Principal Investigator</th>
+                    <td>mcordiner</td>
+                </tr>
+
+                <tr>
+                    <th>OUS Status Entity id</th>
+                    <td>uid://A001/X3666/X10f</td>
+                </tr>
+                <tr>
+                    <th>Observation Start</th>
+                    <td>2024-07-01 17:00:46&nbsp;UTC</td>
+                </tr>
+                <tr>
+                    <th>Observation End</th>
+                    <td>2024-07-01 18:27:42&nbsp;UTC</td>
+                </tr>
+                <tr>
+                    <th>Number of Execution Blocks</th>
+                    <td>1</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="col-md-6">
+        <h2>Pipeline Summary</h2>
+
+        <table class="table table-condensed">
+            <thead>
+                <tr>
+                    <th class="col-md-3"></th>
+                    <th class="col-md-6"></th>
+                    <th class="col-md-2"></th>
+                    <th class="col-md-1"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>Pipeline Version</th>
+                    <td>2023.1.0.124
+                        (<a href=http://almascience.org/documents-and-tools/pipeline-documentation-archive>documentation</a>)
+                    </td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>CASA Version</th>
+                    <td>6.5.4.9 (<a href="javascript:"
+                                            data-fancybox
+                                            data-selectable="true"
+                                            data-options='{"touch" : false}'
+                                            data-src="#hidden-environment">environment</a>)</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>IERSeop2000 Version</th>
+                        <td>0001.0182 (last date: 2024-05-23 00:00:00)</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>IERSpredict Version</th>
+                        <td>0623.1601 (last date: 2024-10-05 00:00:00) </td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>Pipeline Start</th>
+                    <td>2024-07-09 18:47:01&nbsp;UTC</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>Execution Duration</th>
+                    <td>3:02:51</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+
+            </tbody>
+        </table>
+<!-- 
+ -->
+    </div>
+
+</div>
+
+
+        <div id="qa_notes" data-href="qa_notes.html"></div>
+
+        <h2>Observation Summary</h2>
+
+        <table class="table table-bordered table-condensed"
+            summary="Measurement Set Summaries">
+
+        <thead>
+            <tr>
+
+            <th scope="col" rowspan="2">Measurement Set</th>
+            <th scope="col" rowspan="2">Receivers</th>
+            <th scope="col" rowspan="2">Num Antennas</th>
+            <th scope="col" colspan="3">Time (UTC)</th>
+                    <!-- break heading divider for subcolumns -->
+            <th scope="col" colspan="3">Baseline Length</th>
+            <th scope="col" rowspan="2">Size</th>
+            </tr>
+            <tr>
+            <th scope="col">Start</th>
+            <th scope="col">End</th>
+            <th scope="col">On Target</th>
+            <th scope="col">Min</th>
+            <th scope="col">Max</th>
+            <th scope="col">RMS</th>
+            </tr>
+        </thead>
+            <tbody>
+                
+                    
+                        
+                            <tr bgcolor="#D1E0FF">
+                                <td colspan="10"><b> Observing Unit Set Status: </b> uid://A001/X3666/X10f <b>Scheduling Block ID:</b> uid://A001/X3666/X8d <b>Scheduling Block Name:</b> 12PPons-_ab_07_7M</td>
+                            </tr>
+                            <tr bgcolor="#E8F0FF">
+                            
+                                <td colspan="10"><b>Session:</b> session_2 <b>ACS Version:</b> 28ab550e9d, <b>Build Version:</b> ONLINE-CYCLE10-B-34-2024-04-17-05-00-00 </td>
+                            </tr>
+                                <!-- If either the ACS software version or build version is different from the previous value, display the new software and build versions. -->
+                                <tr>
+                                    <td><a href="t2-1.html?sidebar=sidebar_uid___A002_X1199f9e_Xb031_ms">uid___A002_X1199f9e_Xb031.ms</a></td>
+                                    <td>ALMA Band 7</td>
+                                    <td>8</td>
+                                    <td>2024-07-01 17:00:46</td>
+                                    <td>2024-07-01 18:27:42
+                                            <p>MS dates not fully covered by IERSeop2000. CASA will use IERSpredict.</p>
+                                        </td>
+                                    <td>0:35:19</td>
+                                    <td>8.9 m</td>
+                                    <td>48.9 m</td>
+                                    <td>28.4 m</td>
+                                    <td>5.7 GiB</td>
+                                </tr>
+                                <!-- If either the ACS software version or build version is different from the previous value, display the new software and build versions. -->
+                                <tr>
+                                    <td><a href="t2-1.html?sidebar=sidebar_uid___A002_X1199f9e_Xb031_targets_ms">uid___A002_X1199f9e_Xb031_targets.ms</a></td>
+                                    <td>ALMA Band 7</td>
+                                    <td>8</td>
+                                    <td>2024-07-01 17:35:10</td>
+                                    <td>2024-07-01 18:25:41
+                                            <p>MS dates not fully covered by IERSeop2000. CASA will use IERSpredict.</p>
+                                        </td>
+                                    <td>0:35:19</td>
+                                    <td>8.9 m</td>
+                                    <td>48.9 m</td>
+                                    <td>28.4 m</td>
+                                    <td>2.2 GiB</td>
+                                </tr>
+                                <!-- If either the ACS software version or build version is different from the previous value, display the new software and build versions. -->
+                                <tr>
+                                    <td><a href="t2-1.html?sidebar=sidebar_uid___A002_X1199f9e_Xb031_targets_line_ms">uid___A002_X1199f9e_Xb031_targets_line.ms</a></td>
+                                    <td>ALMA Band 7</td>
+                                    <td>8</td>
+                                    <td>2024-07-01 17:35:10</td>
+                                    <td>2024-07-01 18:25:41
+                                            <p>MS dates not fully covered by IERSeop2000. CASA will use IERSpredict.</p>
+                                        </td>
+                                    <td>0:35:19</td>
+                                    <td>8.9 m</td>
+                                    <td>48.9 m</td>
+                                    <td>28.4 m</td>
+                                    <td>2.2 GiB</td>
+                                </tr>
+                        
+            </tbody>
+        </table>
+
+<div style="display: none;" id="hidden-environment">
+    <p><strong>Execution Mode:</strong> Serial</p>
+
+    <table class="table table-bordered"
+           summary="Processing environment for this pipeline reduction">
+        <caption>Processing environment for this pipeline reduction</caption>
+        <thead>
+            <th>Hostname</th>
+            <th># MPI Servers</th>
+            <th># CPU cores</th>
+            <th>CPU</th>
+            <th>RAM</th>
+            <th>OS</th>
+            <th>Max open file descriptors</th>
+        </thead>
+        <tbody>
+            <tr>
+                    <td>jaopost048</td>
+                    <td>N/A</td>
+                    <td>16</td>
+                    <td>Intel(R) Xeon(R) Gold 6244 CPU @ 3.60GHz</td>
+                    <td>503.4 GiB</td>
+                    <td>Red Hat Enterprise Linux 8.6 (Ootpa)</td>
+                    <td>32768</td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+
+	
+	<div class="footer">
+		
+	</div>
+</div>
+
+</body>
+</html>
